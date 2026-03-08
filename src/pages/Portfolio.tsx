@@ -513,7 +513,7 @@ const Portfolio = () => {
                   </div>
 
                   {/* Title */}
-                  <h3 className="relative text-sm font-bold tracking-tight text-foreground/90 sm:text-[15px]">
+                  <h3 className="relative text-sm font-bold tracking-tight text-foreground sm:text-[15px]">
                     {skill.title}
                   </h3>
 
