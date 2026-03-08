@@ -88,6 +88,18 @@ const projects = [
     gradient: "from-[hsl(40,60%,92%)] to-[hsl(45,45%,96%)]",
     accentColor: "hsl(40, 65%, 48%)",
   },
+  {
+    title: "AI/ML Model Lab",
+    subtitle: "NLP & Agents Playground",
+    description:
+      "Hands-on AI lab exploring NLP, fine-tuning with LoRA, and multi-agent orchestration. Features an AI Resume Scanner, text classification, and streaming assistants — all in a playful learning interface.",
+    role: "Full-Stack Developer · AI/ML Engineer",
+    tags: ["NLP", "Fine-tuning", "LoRA", "AI Agents", "Lovable Cloud", "Edge Functions"],
+    url: "https://aimlmodel.vercel.app/",
+    emoji: "🧠",
+    gradient: "from-[hsl(20,60%,92%)] to-[hsl(25,45%,96%)]",
+    accentColor: "hsl(20, 65%, 50%)",
+  },
 ];
 
 const ProjectCard = ({ project, index }: { project: (typeof projects)[0]; index: number }) => {
