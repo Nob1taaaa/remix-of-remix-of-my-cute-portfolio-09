@@ -65,6 +65,18 @@ const projects = [
     accentColor: "hsl(270, 50%, 55%)",
   },
   {
+    title: "RAGMode",
+    subtitle: "Realtime AI Workspace",
+    description:
+      "Full RAG + LangChain system with realtime AI assistance. Ingest PDFs, reports, and datasets, then query them through a streaming assistant with vector search and analytical copilots.",
+    role: "Full-Stack Developer · AI Engineer",
+    tags: ["RAG", "LangChain", "Vector Search", "Streaming AI", "PDF Parsing"],
+    url: "https://ragmode.vercel.app/",
+    emoji: "⚡",
+    gradient: "from-[hsl(175,50%,90%)] to-[hsl(185,40%,95%)]",
+    accentColor: "hsl(175, 55%, 40%)",
+  },
+  {
     title: "GhatBanaras",
     subtitle: "Hidden Banaras Explorer",
     description:
