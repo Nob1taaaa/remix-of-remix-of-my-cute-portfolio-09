@@ -87,6 +87,14 @@ const projects: Project[] = [
     tags: ["Student Tools", "Resource Hub", "Community", "Modern Frontend", "Clean UX", "Vercel Deployment"],
     url: "https://studentshelp.vercel.app",
   },
+  {
+    title: "AI/ML Model Lab 🧠",
+    description:
+      "Hands-on AI lab exploring NLP, fine-tuning with LoRA, and multi-agent orchestration. Features an AI Resume Scanner, text classification, and streaming assistants — all in a playful learning interface.",
+    role: "Full-Stack Developer · AI/ML Engineer",
+    tags: ["NLP", "Fine-tuning", "LoRA", "AI Agents", "Lovable Cloud", "Edge Functions"],
+    url: "https://aimlmodel.vercel.app/",
+  },
 ];
 
 /* ── Journey timeline data ── */
