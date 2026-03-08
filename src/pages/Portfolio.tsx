@@ -77,6 +77,21 @@ const projects: Project[] = [
     url: "https://tendergift.vercel.app",
   },
   {
+    title: "BeBrave — BoostHabits 💪",
+    description:
+      "A mood-aware wellness app that checks in on how you're feeling and delivers personalized boosts, habit tracking, and daily motivation. Features a soothing UI with mood selection, streak tracking, and gentle nudges to build positive routines.",
+    role: "Full-Stack Developer · Wellness Tech",
+    tags: [
+      "Mood Tracking",
+      "Habit Builder",
+      "Modern Frontend",
+      "Auth & Streaks",
+      "Wellness UX",
+      "Vercel Deployment",
+    ],
+    url: "https://bebrave.vercel.app/",
+  },
+  {
     title: "GhatBanaras — Hidden Banaras 🔱",
     description:
       "AI-assisted travel platform for Varanasi that surfaces hidden ghats, local stories, and non-obvious experiences. Designed flows for OpenAI-powered trip planning, authentication, and a polished frontend for travelers, hotel owners, and tour guides.",
