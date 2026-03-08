@@ -495,7 +495,7 @@ const Portfolio = () => {
               ].map((skill) => (
                 <div
                   key={skill.title}
-                  className="group relative overflow-hidden rounded-2xl border border-border/10 bg-card/30 p-5 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-border/25 hover:bg-card/50 hover:shadow-[0_8px_40px_-12px_var(--glow)]"
+                  className="group relative overflow-hidden rounded-2xl border border-border/40 bg-card/70 p-5 shadow-md backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-border/60 hover:bg-card/85 hover:shadow-[0_8px_40px_-12px_var(--glow)]"
                   style={{ "--glow": `${skill.glow}40` } as React.CSSProperties}
                 >
                   {/* Glass shine line */}
@@ -508,17 +508,17 @@ const Portfolio = () => {
                   />
 
                   {/* Icon */}
-                  <div className="relative mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-border/10 bg-background/40 text-2xl shadow-sm backdrop-blur-sm transition-all duration-500 group-hover:scale-110 group-hover:border-border/20 group-hover:shadow-lg group-hover:rotate-3">
+                  <div className="relative mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-border/30 bg-background/60 text-2xl shadow-sm backdrop-blur-sm transition-all duration-500 group-hover:scale-110 group-hover:border-border/40 group-hover:shadow-lg group-hover:rotate-3">
                     {skill.icon}
                   </div>
 
                   {/* Title */}
-                  <h3 className="relative text-sm font-bold tracking-tight text-foreground/90 sm:text-[15px]">
+                  <h3 className="relative text-sm font-bold tracking-tight text-foreground sm:text-[15px]">
                     {skill.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="relative mt-2 text-[11.5px] leading-[1.7] text-muted-foreground/50 sm:text-xs">
+                  <p className="relative mt-2 text-[11.5px] leading-[1.7] text-muted-foreground/80 sm:text-xs">
                     {skill.description}
                   </p>
 
@@ -527,7 +527,7 @@ const Portfolio = () => {
                     {skill.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full border border-border/10 bg-background/20 px-2.5 py-1 text-[9px] font-semibold tracking-wider text-muted-foreground/45 backdrop-blur-sm transition-all duration-300 group-hover:border-border/20 group-hover:text-muted-foreground/70 sm:text-[10px]"
+                        className="rounded-full border border-border/30 bg-background/40 px-2.5 py-1 text-[9px] font-semibold tracking-wider text-muted-foreground/70 backdrop-blur-sm transition-all duration-300 group-hover:border-border/40 group-hover:text-muted-foreground/90 sm:text-[10px]"
                       >
                         {tag}
                       </span>
@@ -544,7 +544,7 @@ const Portfolio = () => {
             </div>
 
             {/* Tools cloud — glass panel */}
-            <div className="relative overflow-hidden rounded-2xl border border-border/10 bg-card/25 p-6 backdrop-blur-xl">
+            <div className="relative overflow-hidden rounded-2xl border border-border/40 bg-card/65 p-6 shadow-md backdrop-blur-xl">
               <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-foreground/8 to-transparent" />
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-base">🛠️</span>
@@ -560,7 +560,7 @@ const Portfolio = () => {
                 ].map((tool) => (
                   <span
                     key={tool}
-                    className="rounded-full border border-border/10 bg-background/20 px-3.5 py-1.5 text-[10px] font-semibold text-muted-foreground/50 backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:bg-background/40 hover:text-foreground/80 hover:-translate-y-0.5 hover:shadow-sm sm:text-[11px]"
+                    className="rounded-full border border-border/30 bg-background/40 px-3.5 py-1.5 text-[10px] font-semibold text-muted-foreground/70 backdrop-blur-sm transition-all duration-300 hover:border-primary/30 hover:bg-background/60 hover:text-foreground/90 hover:-translate-y-0.5 hover:shadow-sm sm:text-[11px]"
                   >
                     {tool}
                   </span>
