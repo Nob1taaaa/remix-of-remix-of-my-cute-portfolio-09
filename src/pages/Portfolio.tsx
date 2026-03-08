@@ -79,6 +79,14 @@ const projects: Project[] = [
     tags: ["Expense Tracking", "Group Management", "Invite Codes", "Modern Frontend", "Clean UX", "Vercel Deployment"],
     url: "https://split-two-wheat.vercel.app",
   },
+  {
+    title: "StudentHelp — Student Resource Hub 🎓",
+    description:
+      "A student-focused platform that connects learners with helpful resources, tools, and community support. Designed to streamline the student experience with a clean, accessible interface and useful utilities.",
+    role: "Full-Stack Developer",
+    tags: ["Student Tools", "Resource Hub", "Community", "Modern Frontend", "Clean UX", "Vercel Deployment"],
+    url: "https://studentshelp.vercel.app",
+  },
 ];
 
 /* ── Journey timeline data ── */
