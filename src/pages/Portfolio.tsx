@@ -462,6 +462,125 @@ const Portfolio = () => {
           </section>
         </FadeInSection>
 
+        {/* ─── AI Engineering Expertise ─── */}
+        <FadeInSection delay={110}>
+          <section className="space-y-5">
+            <div className="flex items-center gap-2">
+              <div className="h-1 w-6 rounded-full bg-primary/30" />
+              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground/50">AI Engineering</p>
+            </div>
+            <h2 className="text-xl font-bold tracking-tight sm:text-2xl">
+              Full-spectrum AI capabilities 🧬
+            </h2>
+            <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground/60">
+              From prompt engineering to production ML pipelines — here&apos;s what I bring to the table as an AI engineer.
+            </p>
+
+            {/* AI skills grid */}
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                {
+                  icon: "🧠",
+                  title: "LLM & Prompt Engineering",
+                  description: "Designing system prompts, chain-of-thought reasoning, few-shot learning, and guardrails for GPT-4, Claude, Gemini, and open-source models.",
+                  tags: ["OpenAI API", "Claude API", "Gemini", "Prompt Design"],
+                },
+                {
+                  icon: "🔗",
+                  title: "RAG & Vector Search",
+                  description: "Building retrieval-augmented generation pipelines with document ingestion, chunking strategies, embedding models, and semantic search.",
+                  tags: ["LangChain", "Embeddings", "Vector DBs", "PDF Parsing"],
+                },
+                {
+                  icon: "🤖",
+                  title: "AI Agents & Orchestration",
+                  description: "Multi-agent systems, tool-calling agents, autonomous workflows, and function-calling patterns for complex task execution.",
+                  tags: ["Agent Systems", "Tool Calling", "n8n", "Workflows"],
+                },
+                {
+                  icon: "🎯",
+                  title: "Fine-Tuning & Adapters",
+                  description: "Supervised fine-tuning, LoRA adapters, dataset curation, and model evaluation for domain-specific performance.",
+                  tags: ["LoRA", "Fine-Tuning", "Hugging Face", "Datasets"],
+                },
+                {
+                  icon: "📊",
+                  title: "NLP & Text Processing",
+                  description: "Tokenization, text classification, named entity recognition, sentiment analysis, and structured extraction from unstructured data.",
+                  tags: ["NLP", "Classification", "NER", "Extraction"],
+                },
+                {
+                  icon: "⚡",
+                  title: "AI Infrastructure",
+                  description: "Edge functions for AI inference, streaming responses, API gateway design, rate limiting, caching, and cost optimization for AI APIs.",
+                  tags: ["Edge Functions", "Streaming", "API Design", "Cost Ops"],
+                },
+                {
+                  icon: "🔍",
+                  title: "Evaluation & Testing",
+                  description: "AI output evaluation, hallucination detection, A/B testing prompts, benchmarking model performance, and quality assurance pipelines.",
+                  tags: ["Eval Pipelines", "Benchmarks", "Quality", "Testing"],
+                },
+                {
+                  icon: "🛡️",
+                  title: "AI Safety & Ethics",
+                  description: "Content filtering, bias detection, responsible AI practices, safety guardrails, and compliance with AI governance frameworks.",
+                  tags: ["Safety", "Guardrails", "Bias Detection", "Ethics"],
+                },
+                {
+                  icon: "🚀",
+                  title: "Production AI Deployment",
+                  description: "Taking AI from prototype to production — model serving, monitoring, fallback strategies, and scaling for real users.",
+                  tags: ["Vercel AI SDK", "Docker", "Monitoring", "Scaling"],
+                },
+              ].map((skill) => (
+                <TiltCard key={skill.title} className="rounded-2xl">
+                  <article className="flex flex-col h-full rounded-2xl border border-border/25 bg-card/60 p-5 shadow-sm backdrop-blur-sm">
+                    <div className="flex items-start gap-3">
+                      <span className="text-xl mt-0.5">{skill.icon}</span>
+                      <h3 className="text-[13px] font-bold tracking-tight text-foreground/85 sm:text-sm leading-snug">{skill.title}</h3>
+                    </div>
+                    <p className="mt-2.5 text-[11px] leading-[1.7] text-muted-foreground/55 sm:text-xs flex-1">{skill.description}</p>
+                    <div className="mt-3 flex flex-wrap gap-1.5">
+                      {skill.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-md border border-primary/10 bg-primary/[0.04] px-2 py-0.5 text-[9px] font-semibold tracking-wide text-primary/60 sm:text-[10px]"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </article>
+                </TiltCard>
+              ))}
+            </div>
+
+            {/* AI tools & models I work with */}
+            <div className="rounded-2xl border border-border/25 bg-card/50 p-5 backdrop-blur-sm">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-base">🛠️</span>
+                <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-muted-foreground/45">Models &amp; tools I work with</p>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "GPT-4 / GPT-4o", "Claude 3.5 / Claude Code", "Gemini Pro", "Llama 3", "Mistral",
+                  "Hugging Face Transformers", "LangChain", "Vercel AI SDK", "OpenAI API",
+                  "Pinecone", "ChromaDB", "n8n Workflows", "Docker", "Edge Functions",
+                  "TensorFlow.js", "Stable Diffusion", "Whisper API",
+                ].map((tool) => (
+                  <span
+                    key={tool}
+                    className="rounded-full border border-border/25 bg-background/50 px-3 py-1.5 text-[10px] font-semibold text-muted-foreground/60 transition-all duration-300 hover:border-primary/20 hover:text-foreground/80 hover:-translate-y-0.5 sm:text-[11px]"
+                  >
+                    {tool}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </section>
+        </FadeInSection>
+
         {/* ─── Featured Publication ─── */}
         <FadeInSection delay={120}>
           <section>
