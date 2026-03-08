@@ -477,12 +477,13 @@ const Portfolio = () => {
               From prompt engineering to production ML pipelines — here&apos;s what I bring to the table as an AI engineer.
             </p>
 
-            {/* AI skills grid */}
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {/* AI skills grid — Projects page style */}
+            <div className="grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 {
                   icon: "🧠",
                   title: "LLM & Prompt Engineering",
+                  subtitle: "Foundation Models",
                   description: "Designing system prompts, chain-of-thought reasoning, few-shot learning, and guardrails for GPT-4, Claude, Gemini, and open-source models.",
                   tags: ["OpenAI API", "Claude API", "Gemini", "Prompt Design"],
                   accent: "hsl(250, 55%, 60%)",
@@ -491,6 +492,7 @@ const Portfolio = () => {
                 {
                   icon: "🔗",
                   title: "RAG & Vector Search",
+                  subtitle: "Retrieval Pipelines",
                   description: "Building retrieval-augmented generation pipelines with document ingestion, chunking strategies, embedding models, and semantic search.",
                   tags: ["LangChain", "Embeddings", "Vector DBs", "PDF Parsing"],
                   accent: "hsl(175, 55%, 42%)",
@@ -499,6 +501,7 @@ const Portfolio = () => {
                 {
                   icon: "🤖",
                   title: "AI Agents & Orchestration",
+                  subtitle: "Autonomous Systems",
                   description: "Multi-agent systems, tool-calling agents, autonomous workflows, and function-calling patterns for complex task execution.",
                   tags: ["Agent Systems", "Tool Calling", "n8n", "Workflows"],
                   accent: "hsl(210, 60%, 55%)",
@@ -507,6 +510,7 @@ const Portfolio = () => {
                 {
                   icon: "🎯",
                   title: "Fine-Tuning & Adapters",
+                  subtitle: "Model Customization",
                   description: "Supervised fine-tuning, LoRA adapters, dataset curation, and model evaluation for domain-specific performance.",
                   tags: ["LoRA", "Fine-Tuning", "Hugging Face", "Datasets"],
                   accent: "hsl(340, 55%, 55%)",
@@ -515,6 +519,7 @@ const Portfolio = () => {
                 {
                   icon: "📊",
                   title: "NLP & Text Processing",
+                  subtitle: "Language Understanding",
                   description: "Tokenization, text classification, named entity recognition, sentiment analysis, and structured extraction from unstructured data.",
                   tags: ["NLP", "Classification", "NER", "Extraction"],
                   accent: "hsl(30, 65%, 50%)",
@@ -523,6 +528,7 @@ const Portfolio = () => {
                 {
                   icon: "⚡",
                   title: "AI Infrastructure",
+                  subtitle: "Scalable Systems",
                   description: "Edge functions for AI inference, streaming responses, API gateway design, rate limiting, caching, and cost optimization for AI APIs.",
                   tags: ["Edge Functions", "Streaming", "API Design", "Cost Ops"],
                   accent: "hsl(45, 70%, 48%)",
@@ -531,6 +537,7 @@ const Portfolio = () => {
                 {
                   icon: "🔍",
                   title: "Evaluation & Testing",
+                  subtitle: "Quality Assurance",
                   description: "AI output evaluation, hallucination detection, A/B testing prompts, benchmarking model performance, and quality assurance pipelines.",
                   tags: ["Eval Pipelines", "Benchmarks", "Quality", "Testing"],
                   accent: "hsl(145, 45%, 45%)",
@@ -539,6 +546,7 @@ const Portfolio = () => {
                 {
                   icon: "🛡️",
                   title: "AI Safety & Ethics",
+                  subtitle: "Responsible AI",
                   description: "Content filtering, bias detection, responsible AI practices, safety guardrails, and compliance with AI governance frameworks.",
                   tags: ["Safety", "Guardrails", "Bias Detection", "Ethics"],
                   accent: "hsl(200, 55%, 50%)",
@@ -547,55 +555,92 @@ const Portfolio = () => {
                 {
                   icon: "🚀",
                   title: "Production AI Deployment",
+                  subtitle: "Ship & Scale",
                   description: "Taking AI from prototype to production — model serving, monitoring, fallback strategies, and scaling for real users.",
                   tags: ["Vercel AI SDK", "Docker", "Monitoring", "Scaling"],
                   accent: "hsl(270, 50%, 55%)",
                   gradient: "from-[hsl(270,40%,94%)] to-[hsl(280,30%,97%)]",
                 },
-              ].map((skill) => (
-                <TiltCard key={skill.title} className="rounded-2xl">
-                  <article className="group relative flex flex-col h-full overflow-hidden rounded-2xl border border-border/20 bg-card/60 shadow-sm backdrop-blur-sm transition-all duration-500 hover:shadow-[0_8px_30px_-10px_var(--skill-accent)]"
-                    style={{ "--skill-accent": `${skill.accent}30` } as React.CSSProperties}
-                  >
-                    {/* Colored top bar */}
-                    <div className="h-1 w-full transition-all duration-500 group-hover:h-1.5" style={{ background: `linear-gradient(90deg, ${skill.accent}, transparent)` }} />
-                    
-                    <div className="flex flex-col flex-1 p-5">
-                      <div className="flex items-start gap-3">
-                        <div
-                          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${skill.gradient} text-lg shadow-sm transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-md`}
-                        >
-                          {skill.icon}
-                        </div>
-                        <h3 className="text-[13px] font-bold tracking-tight text-foreground/85 sm:text-sm leading-snug mt-1.5">{skill.title}</h3>
+              ].map((skill, index) => (
+                <div
+                  key={skill.title}
+                  className="group relative flex flex-col overflow-hidden rounded-[20px] border border-border/30 bg-card transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] hover:shadow-[0_20px_60px_-15px_hsl(var(--primary)/0.18),0_0_0_1px_hsl(var(--primary)/0.08)] hover:-translate-y-3 hover:scale-[1.02]"
+                >
+                  {/* Colored top gradient band */}
+                  <div
+                    className="h-[3px] w-full transition-all duration-500 group-hover:h-1"
+                    style={{ background: `linear-gradient(90deg, ${skill.accent}, transparent)` }}
+                  />
+
+                  <div className="flex flex-1 flex-col p-5 sm:p-6">
+                    {/* Header: emoji bubble + title + number */}
+                    <div className="flex items-start gap-3.5">
+                      <div
+                        className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${skill.gradient} text-xl shadow-sm transition-all duration-500 group-hover:scale-110 group-hover:shadow-md group-hover:rotate-3`}
+                      >
+                        {skill.icon}
                       </div>
-                      <p className="mt-3 text-[11px] leading-[1.75] text-muted-foreground/55 sm:text-xs flex-1">{skill.description}</p>
-                      <div className="mt-4 flex flex-wrap gap-1.5">
-                        {skill.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="rounded-md px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider transition-all duration-300 sm:text-[10px]"
-                            style={{
-                              background: `${skill.accent}10`,
-                              color: skill.accent,
-                              border: `1px solid ${skill.accent}20`,
-                            }}
-                          >
-                            {tag}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between gap-2">
+                          <h3 className="text-[15px] font-bold tracking-tight text-foreground sm:text-base truncate">
+                            {skill.title}
+                          </h3>
+                          <span className="shrink-0 font-mono text-[10px] font-semibold text-muted-foreground/30 transition-colors duration-300 group-hover:text-primary/50">
+                            #{String(index + 1).padStart(2, "0")}
                           </span>
-                        ))}
+                        </div>
+                        <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground/50 sm:text-xs">
+                          {skill.subtitle}
+                        </p>
                       </div>
                     </div>
 
-                    {/* Hover glow blob */}
-                    <div
-                      className="pointer-events-none absolute -bottom-8 -right-8 h-28 w-28 rounded-full opacity-0 blur-3xl transition-opacity duration-700 group-hover:opacity-25"
-                      style={{ background: skill.accent }}
-                    />
-                  </article>
-                </TiltCard>
+                    {/* Description */}
+                    <p className="mt-4 text-[12.5px] leading-[1.7] text-muted-foreground/65 sm:text-[13px]">
+                      {skill.description}
+                    </p>
+
+                    {/* Role pill */}
+                    <div className="mt-4 flex items-center gap-2">
+                      <span
+                        className="inline-flex items-center gap-1.5 rounded-full px-3 py-[5px] text-[10px] font-bold uppercase tracking-[0.12em] transition-all duration-300 group-hover:shadow-sm sm:text-[10.5px]"
+                        style={{
+                          background: `${skill.accent}15`,
+                          color: skill.accent,
+                        }}
+                      >
+                        <Sparkles className="h-2.5 w-2.5" />
+                        Core Skill
+                      </span>
+                    </div>
+
+                    {/* Tags */}
+                    <div className="mt-auto pt-5 flex flex-wrap gap-1.5">
+                      {skill.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-lg border border-border/20 bg-background/50 px-2 py-[3px] text-[9.5px] font-semibold tracking-wide text-muted-foreground/50 transition-all duration-300 group-hover:border-border/40 group-hover:text-muted-foreground/70 sm:text-[10px]"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Floating glow blobs */}
+                  <div
+                    className="pointer-events-none absolute -bottom-10 -right-10 h-32 w-32 rounded-full opacity-0 blur-3xl transition-opacity duration-700 group-hover:opacity-30"
+                    style={{ background: skill.accent }}
+                  />
+                  <div
+                    className="pointer-events-none absolute -top-8 -left-8 h-24 w-24 rounded-full opacity-0 blur-3xl transition-opacity duration-700 group-hover:opacity-20"
+                    style={{ background: skill.accent }}
+                  />
+                </div>
               ))}
             </div>
+
+
 
             {/* AI tools & models I work with */}
             <div className="rounded-2xl border border-border/20 bg-card/50 p-6 backdrop-blur-sm">
