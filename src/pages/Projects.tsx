@@ -100,6 +100,7 @@ const projects = [
     gradient: "from-[hsl(20,60%,92%)] to-[hsl(25,45%,96%)]",
     accentColor: "hsl(20, 65%, 50%)",
   },
+];
 
 const ProjectCard = ({ project, index }: { project: (typeof projects)[0]; index: number }) => {
   const [isVisible, setIsVisible] = useState(false);
