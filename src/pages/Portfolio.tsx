@@ -62,6 +62,21 @@ const projects: Project[] = [
     url: "https://gpsvns.vercel.app",
   },
   {
+    title: "TenderGift — Soft Gift Finder 🎁",
+    description:
+      "AI-powered gift recommendation app that takes a single heartfelt prompt about someone and suggests the perfect personalized gift. Features a dreamy UI, curated gift gallery, and affiliate-powered shopping links — all wrapped in a gentle, cozy experience.",
+    role: "Full-Stack Developer · AI Integration",
+    tags: [
+      "AI Gift Matching",
+      "Modern Frontend",
+      "Curated Gallery",
+      "Prompt-Based UX",
+      "Affiliate Commerce",
+      "Vercel Deployment",
+    ],
+    url: "https://tendergift.vercel.app",
+  },
+  {
     title: "GhatBanaras — Hidden Banaras 🔱",
     description:
       "AI-assisted travel platform for Varanasi that surfaces hidden ghats, local stories, and non-obvious experiences. Designed flows for OpenAI-powered trip planning, authentication, and a polished frontend for travelers, hotel owners, and tour guides.",
