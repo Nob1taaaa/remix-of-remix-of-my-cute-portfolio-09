@@ -71,6 +71,14 @@ const projects: Project[] = [
     tags: ["OpenAI API", "Travel & Tourism", "Auth & User Profiles", "Hotel & Guide Contacts", "Banaras Local Insights", "Modern Frontend"],
     url: "https://ghatbanaras.com",
   },
+  {
+    title: "Split — Expense Splitter 💸",
+    description:
+      "A clean expense-splitting app that lets you create or join a partner's group with invite codes, track shared expenses, and settle balances effortlessly. Features a minimal, intuitive UI focused on simplicity and ease of use.",
+    role: "Full-Stack Developer",
+    tags: ["Expense Tracking", "Group Management", "Invite Codes", "Modern Frontend", "Clean UX", "Vercel Deployment"],
+    url: "https://split-two-wheat.vercel.app",
+  },
 ];
 
 /* ── Journey timeline data ── */
