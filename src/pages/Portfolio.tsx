@@ -462,192 +462,94 @@ const Portfolio = () => {
           </section>
         </FadeInSection>
 
-        {/* ─── AI Engineering Expertise ─── */}
+        {/* ─── AI Engineering Expertise — Glassmorphism ─── */}
         <FadeInSection delay={110}>
-          <section className="space-y-6">
-            <div className="flex items-center gap-2">
-              <div className="h-1 w-6 rounded-full bg-primary/30" />
-              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground/50">AI Engineering</p>
+          <section className="space-y-8">
+            {/* Section header */}
+            <div className="space-y-3">
+              <div className="flex items-center gap-2">
+                <div className="h-1 w-6 rounded-full bg-primary/30" />
+                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground/50">AI Engineering</p>
+              </div>
+              <h2 className="text-xl font-bold tracking-tight sm:text-2xl">
+                Full-spectrum AI capabilities{" "}
+                <span className="bg-gradient-to-r from-primary via-primary/60 to-primary/30 bg-clip-text text-transparent">🧬</span>
+              </h2>
+              <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground/60">
+                From prompt engineering to production ML pipelines — here&apos;s what I bring to the table as an AI engineer.
+              </p>
             </div>
-            <h2 className="text-xl font-bold tracking-tight sm:text-2xl">
-              Full-spectrum AI capabilities{" "}
-              <span className="bg-gradient-to-r from-primary via-primary/60 to-primary/30 bg-clip-text text-transparent">🧬</span>
-            </h2>
-            <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground/60">
-              From prompt engineering to production ML pipelines — here&apos;s what I bring to the table as an AI engineer.
-            </p>
 
-            {/* AI skills grid — Projects page style */}
-            <div className="grid gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {/* Glassmorphism grid */}
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {[
-                {
-                  icon: "🧠",
-                  title: "LLM & Prompt Engineering",
-                  subtitle: "Foundation Models",
-                  description: "Designing system prompts, chain-of-thought reasoning, few-shot learning, and guardrails for GPT-4, Claude, Gemini, and open-source models.",
-                  tags: ["OpenAI API", "Claude API", "Gemini", "Prompt Design"],
-                  accent: "hsl(250, 55%, 60%)",
-                  gradient: "from-[hsl(250,40%,94%)] to-[hsl(260,30%,97%)]",
-                },
-                {
-                  icon: "🔗",
-                  title: "RAG & Vector Search",
-                  subtitle: "Retrieval Pipelines",
-                  description: "Building retrieval-augmented generation pipelines with document ingestion, chunking strategies, embedding models, and semantic search.",
-                  tags: ["LangChain", "Embeddings", "Vector DBs", "PDF Parsing"],
-                  accent: "hsl(175, 55%, 42%)",
-                  gradient: "from-[hsl(175,40%,92%)] to-[hsl(180,30%,96%)]",
-                },
-                {
-                  icon: "🤖",
-                  title: "AI Agents & Orchestration",
-                  subtitle: "Autonomous Systems",
-                  description: "Multi-agent systems, tool-calling agents, autonomous workflows, and function-calling patterns for complex task execution.",
-                  tags: ["Agent Systems", "Tool Calling", "n8n", "Workflows"],
-                  accent: "hsl(210, 60%, 55%)",
-                  gradient: "from-[hsl(210,45%,93%)] to-[hsl(220,35%,96%)]",
-                },
-                {
-                  icon: "🎯",
-                  title: "Fine-Tuning & Adapters",
-                  subtitle: "Model Customization",
-                  description: "Supervised fine-tuning, LoRA adapters, dataset curation, and model evaluation for domain-specific performance.",
-                  tags: ["LoRA", "Fine-Tuning", "Hugging Face", "Datasets"],
-                  accent: "hsl(340, 55%, 55%)",
-                  gradient: "from-[hsl(340,40%,94%)] to-[hsl(350,30%,97%)]",
-                },
-                {
-                  icon: "📊",
-                  title: "NLP & Text Processing",
-                  subtitle: "Language Understanding",
-                  description: "Tokenization, text classification, named entity recognition, sentiment analysis, and structured extraction from unstructured data.",
-                  tags: ["NLP", "Classification", "NER", "Extraction"],
-                  accent: "hsl(30, 65%, 50%)",
-                  gradient: "from-[hsl(30,50%,93%)] to-[hsl(35,40%,96%)]",
-                },
-                {
-                  icon: "⚡",
-                  title: "AI Infrastructure",
-                  subtitle: "Scalable Systems",
-                  description: "Edge functions for AI inference, streaming responses, API gateway design, rate limiting, caching, and cost optimization for AI APIs.",
-                  tags: ["Edge Functions", "Streaming", "API Design", "Cost Ops"],
-                  accent: "hsl(45, 70%, 48%)",
-                  gradient: "from-[hsl(45,50%,92%)] to-[hsl(50,40%,96%)]",
-                },
-                {
-                  icon: "🔍",
-                  title: "Evaluation & Testing",
-                  subtitle: "Quality Assurance",
-                  description: "AI output evaluation, hallucination detection, A/B testing prompts, benchmarking model performance, and quality assurance pipelines.",
-                  tags: ["Eval Pipelines", "Benchmarks", "Quality", "Testing"],
-                  accent: "hsl(145, 45%, 45%)",
-                  gradient: "from-[hsl(145,35%,93%)] to-[hsl(150,25%,96%)]",
-                },
-                {
-                  icon: "🛡️",
-                  title: "AI Safety & Ethics",
-                  subtitle: "Responsible AI",
-                  description: "Content filtering, bias detection, responsible AI practices, safety guardrails, and compliance with AI governance frameworks.",
-                  tags: ["Safety", "Guardrails", "Bias Detection", "Ethics"],
-                  accent: "hsl(200, 55%, 50%)",
-                  gradient: "from-[hsl(200,40%,93%)] to-[hsl(210,30%,96%)]",
-                },
-                {
-                  icon: "🚀",
-                  title: "Production AI Deployment",
-                  subtitle: "Ship & Scale",
-                  description: "Taking AI from prototype to production — model serving, monitoring, fallback strategies, and scaling for real users.",
-                  tags: ["Vercel AI SDK", "Docker", "Monitoring", "Scaling"],
-                  accent: "hsl(270, 50%, 55%)",
-                  gradient: "from-[hsl(270,40%,94%)] to-[hsl(280,30%,97%)]",
-                },
-              ].map((skill, index) => (
+                { icon: "🧠", title: "LLM & Prompt Engineering", description: "System prompts, chain-of-thought, few-shot learning & guardrails for GPT-4, Claude, Gemini.", tags: ["OpenAI API", "Claude API", "Gemini", "Prompt Design"], glow: "hsl(250,55%,60%)" },
+                { icon: "🔗", title: "RAG & Vector Search", description: "Retrieval-augmented generation with document ingestion, chunking, embeddings & semantic search.", tags: ["LangChain", "Embeddings", "Vector DBs", "PDF Parsing"], glow: "hsl(175,55%,42%)" },
+                { icon: "🤖", title: "AI Agents & Orchestration", description: "Multi-agent systems, tool-calling agents, autonomous workflows & function-calling patterns.", tags: ["Agent Systems", "Tool Calling", "n8n", "Workflows"], glow: "hsl(210,60%,55%)" },
+                { icon: "🎯", title: "Fine-Tuning & Adapters", description: "LoRA adapters, supervised fine-tuning, dataset curation & model evaluation for domain tasks.", tags: ["LoRA", "Fine-Tuning", "Hugging Face", "Datasets"], glow: "hsl(340,55%,55%)" },
+                { icon: "📊", title: "NLP & Text Processing", description: "Text classification, NER, sentiment analysis & structured extraction from unstructured data.", tags: ["NLP", "Classification", "NER", "Extraction"], glow: "hsl(30,65%,50%)" },
+                { icon: "⚡", title: "AI Infrastructure", description: "Edge functions, streaming responses, API gateways, rate limiting, caching & cost optimization.", tags: ["Edge Functions", "Streaming", "API Design", "Cost Ops"], glow: "hsl(45,70%,48%)" },
+                { icon: "🔍", title: "Evaluation & Testing", description: "Hallucination detection, A/B testing prompts, benchmarking & quality assurance pipelines.", tags: ["Eval Pipelines", "Benchmarks", "Quality", "Testing"], glow: "hsl(145,45%,45%)" },
+                { icon: "🛡️", title: "AI Safety & Ethics", description: "Content filtering, bias detection, safety guardrails & AI governance compliance.", tags: ["Safety", "Guardrails", "Bias Detection", "Ethics"], glow: "hsl(200,55%,50%)" },
+                { icon: "🚀", title: "Production Deployment", description: "Model serving, monitoring, fallback strategies & scaling AI from prototype to production.", tags: ["Vercel AI SDK", "Docker", "Monitoring", "Scaling"], glow: "hsl(270,50%,55%)" },
+              ].map((skill) => (
                 <div
                   key={skill.title}
-                  className="group relative flex flex-col overflow-hidden rounded-[20px] border border-border/30 bg-card transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] hover:shadow-[0_20px_60px_-15px_hsl(var(--primary)/0.18),0_0_0_1px_hsl(var(--primary)/0.08)] hover:-translate-y-3 hover:scale-[1.02]"
+                  className="group relative overflow-hidden rounded-2xl border border-border/10 bg-card/30 p-5 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-border/25 hover:bg-card/50 hover:shadow-[0_8px_40px_-12px_var(--glow)]"
+                  style={{ "--glow": `${skill.glow}40` } as React.CSSProperties}
                 >
-                  {/* Colored top gradient band */}
+                  {/* Glass shine line */}
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-foreground/10 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+
+                  {/* Glowing orb */}
                   <div
-                    className="h-[3px] w-full transition-all duration-500 group-hover:h-1"
-                    style={{ background: `linear-gradient(90deg, ${skill.accent}, transparent)` }}
+                    className="pointer-events-none absolute -top-12 -right-12 h-32 w-32 rounded-full opacity-0 blur-[60px] transition-opacity duration-700 group-hover:opacity-40"
+                    style={{ background: skill.glow }}
                   />
 
-                  <div className="flex flex-1 flex-col p-5 sm:p-6">
-                    {/* Header: emoji bubble + title + number */}
-                    <div className="flex items-start gap-3.5">
-                      <div
-                        className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${skill.gradient} text-xl shadow-sm transition-all duration-500 group-hover:scale-110 group-hover:shadow-md group-hover:rotate-3`}
-                      >
-                        {skill.icon}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center justify-between gap-2">
-                          <h3 className="text-[15px] font-bold tracking-tight text-foreground sm:text-base truncate">
-                            {skill.title}
-                          </h3>
-                          <span className="shrink-0 font-mono text-[10px] font-semibold text-muted-foreground/30 transition-colors duration-300 group-hover:text-primary/50">
-                            #{String(index + 1).padStart(2, "0")}
-                          </span>
-                        </div>
-                        <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground/50 sm:text-xs">
-                          {skill.subtitle}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Description */}
-                    <p className="mt-4 text-[12.5px] leading-[1.7] text-muted-foreground/65 sm:text-[13px]">
-                      {skill.description}
-                    </p>
-
-                    {/* Role pill */}
-                    <div className="mt-4 flex items-center gap-2">
-                      <span
-                        className="inline-flex items-center gap-1.5 rounded-full px-3 py-[5px] text-[10px] font-bold uppercase tracking-[0.12em] transition-all duration-300 group-hover:shadow-sm sm:text-[10.5px]"
-                        style={{
-                          background: `${skill.accent}15`,
-                          color: skill.accent,
-                        }}
-                      >
-                        <Sparkles className="h-2.5 w-2.5" />
-                        Core Skill
-                      </span>
-                    </div>
-
-                    {/* Tags */}
-                    <div className="mt-auto pt-5 flex flex-wrap gap-1.5">
-                      {skill.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-lg border border-border/20 bg-background/50 px-2 py-[3px] text-[9.5px] font-semibold tracking-wide text-muted-foreground/50 transition-all duration-300 group-hover:border-border/40 group-hover:text-muted-foreground/70 sm:text-[10px]"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
+                  {/* Icon */}
+                  <div className="relative mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-border/10 bg-background/40 text-2xl shadow-sm backdrop-blur-sm transition-all duration-500 group-hover:scale-110 group-hover:border-border/20 group-hover:shadow-lg group-hover:rotate-3">
+                    {skill.icon}
                   </div>
 
-                  {/* Floating glow blobs */}
+                  {/* Title */}
+                  <h3 className="relative text-sm font-bold tracking-tight text-foreground/90 sm:text-[15px]">
+                    {skill.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="relative mt-2 text-[11.5px] leading-[1.7] text-muted-foreground/50 sm:text-xs">
+                    {skill.description}
+                  </p>
+
+                  {/* Tags */}
+                  <div className="relative mt-4 flex flex-wrap gap-1.5">
+                    {skill.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full border border-border/10 bg-background/20 px-2.5 py-1 text-[9px] font-semibold tracking-wider text-muted-foreground/45 backdrop-blur-sm transition-all duration-300 group-hover:border-border/20 group-hover:text-muted-foreground/70 sm:text-[10px]"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Bottom glow */}
                   <div
-                    className="pointer-events-none absolute -bottom-10 -right-10 h-32 w-32 rounded-full opacity-0 blur-3xl transition-opacity duration-700 group-hover:opacity-30"
-                    style={{ background: skill.accent }}
-                  />
-                  <div
-                    className="pointer-events-none absolute -top-8 -left-8 h-24 w-24 rounded-full opacity-0 blur-3xl transition-opacity duration-700 group-hover:opacity-20"
-                    style={{ background: skill.accent }}
+                    className="pointer-events-none absolute -bottom-16 left-1/2 h-24 w-3/4 -translate-x-1/2 rounded-full opacity-0 blur-[50px] transition-opacity duration-700 group-hover:opacity-20"
+                    style={{ background: skill.glow }}
                   />
                 </div>
               ))}
             </div>
 
-
-
-            {/* AI tools & models I work with */}
-            <div className="rounded-2xl border border-border/20 bg-card/50 p-6 backdrop-blur-sm">
+            {/* Tools cloud — glass panel */}
+            <div className="relative overflow-hidden rounded-2xl border border-border/10 bg-card/25 p-6 backdrop-blur-xl">
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-foreground/8 to-transparent" />
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-base">🛠️</span>
                 <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-muted-foreground/45">Models &amp; tools I work with</p>
-                <span className="ml-auto text-[10px] font-semibold text-primary/40">17 tools</span>
+                <span className="ml-auto rounded-full border border-primary/15 bg-primary/5 px-2.5 py-0.5 text-[10px] font-semibold text-primary/60 backdrop-blur-sm">17 tools</span>
               </div>
               <div className="flex flex-wrap gap-2">
                 {[
@@ -655,10 +557,10 @@ const Portfolio = () => {
                   "Hugging Face Transformers", "LangChain", "Vercel AI SDK", "OpenAI API",
                   "Pinecone", "ChromaDB", "n8n Workflows", "Docker", "Edge Functions",
                   "TensorFlow.js", "Stable Diffusion", "Whisper API",
-                ].map((tool, i) => (
+                ].map((tool) => (
                   <span
                     key={tool}
-                    className="rounded-full border border-border/20 bg-background/40 px-3.5 py-1.5 text-[10px] font-semibold text-muted-foreground/55 transition-all duration-300 hover:border-primary/25 hover:text-foreground/80 hover:-translate-y-0.5 hover:shadow-sm sm:text-[11px]"
+                    className="rounded-full border border-border/10 bg-background/20 px-3.5 py-1.5 text-[10px] font-semibold text-muted-foreground/50 backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:bg-background/40 hover:text-foreground/80 hover:-translate-y-0.5 hover:shadow-sm sm:text-[11px]"
                   >
                     {tool}
                   </span>
