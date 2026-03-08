@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react";
+import { Download, Sparkles, ArrowUpRight } from "lucide-react";
 import jsiarCertificate from "@/assets/jsiar-certificate.png";
 
 interface Project {
@@ -108,14 +108,43 @@ const projects: Project[] = [
   },
 ];
 
+/* Reusable scroll-reveal wrapper */
+const FadeInSection = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => {
+  const [visible, setVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => setVisible(true), delay);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.08 }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [delay]);
+
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"} ${className}`}
+    >
+      {children}
+    </div>
+  );
+};
+
 const Portfolio = () => {
   const [showMobileSkills, setShowMobileSkills] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-accent/10 text-foreground">
+    <div className="min-h-screen bg-gradient-to-b from-background via-background to-accent/5 text-foreground">
       {/* Top nav */}
-      <header className="sticky top-0 z-20 border-b border-border/60 bg-background/80/95 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
+      <header className="sticky top-0 z-20 border-b border-border/40 bg-background/90 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4 sm:px-6">
           <Link to="/" className="text-lg font-semibold tracking-tight transition-colors hover:text-primary">
             Harshit Shah
           </Link>
@@ -139,290 +168,300 @@ const Portfolio = () => {
         </div>
       </header>
 
-      <main className="relative mx-auto flex max-w-6xl flex-col gap-8 px-4 pb-10 pt-6 sm:gap-12 sm:px-6 sm:pb-16 sm:pt-10">
-        {/* Soft background glow */}
-        <div className="pointer-events-none absolute inset-x-0 -top-10 -z-10 h-64 bg-gradient-to-br from-primary/20 via-accent/10 to-transparent blur-3xl opacity-70" />
+      <main className="relative mx-auto flex max-w-5xl flex-col gap-10 px-4 pb-12 pt-8 sm:gap-14 sm:px-6 sm:pb-20 sm:pt-14">
+        {/* Soft ambient glow */}
+        <div className="pointer-events-none absolute inset-x-0 -top-20 -z-10 h-80 bg-gradient-to-b from-primary/8 via-primary/3 to-transparent blur-3xl" />
 
-        {/* Intro / resume summary */}
-        <section className="space-y-5 animate-enter">
-          <span className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/90 px-4 py-2 text-[11px] font-medium text-muted-foreground shadow-sm shadow-primary/10 backdrop-blur">
-            <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-[10px] text-primary">
-              ✦
+        {/* ─── Intro / Hero ─── */}
+        <FadeInSection>
+          <section className="space-y-6">
+            <span className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-card/80 px-4 py-2 text-[11px] font-medium text-muted-foreground shadow-sm backdrop-blur-sm">
+              <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-[10px] text-primary">
+                <Sparkles className="h-3 w-3" />
+              </span>
+              Full-Stack Developer · AI Engineer · Computer Science Student
             </span>
-            Full-Stack Developer · AI Engineer · Computer Science Student
-          </span>
 
-          <div className="space-y-3">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-              Selected work
-            </p>
-            <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-              Building thoughtful products with
-              <span className="ml-2 bg-gradient-to-r from-primary via-primary/70 to-accent/80 bg-clip-text text-transparent">
-                AI &amp; the web
-              </span>
-            </h1>
-            <p className="max-w-2xl text-sm text-muted-foreground sm:text-base">
-              I&apos;m a full-stack developer and AI engineer specializing in modern web apps with AI integration — from
-              Firebase/Supabase backends and automation workflows to clean, production-ready interfaces.
-            </p>
-            <p className="max-w-2xl text-sm text-muted-foreground sm:text-base">
-              IIT BHU Hackathon 2025 winner and IBM Student Ambassador, I regularly write on Medium about full-stack
-              development, AI tooling, and career strategies while leading technical teams and coding clubs.
-            </p>
-          </div>
+            <div className="space-y-4">
+              <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-muted-foreground/60">
+                Selected work
+              </p>
+              <h1 className="text-3xl font-bold tracking-tight leading-[1.15] sm:text-[2.75rem]">
+                Building thoughtful products with
+                <span className="ml-2 bg-gradient-to-r from-primary via-primary/70 to-primary/40 bg-clip-text text-transparent">
+                  AI &amp; the web
+                </span>
+              </h1>
+              <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground/70 sm:text-[15px]">
+                I&apos;m a full-stack developer and AI engineer specializing in modern web apps with AI integration — from
+                Firebase/Supabase backends and automation workflows to clean, production-ready interfaces.
+              </p>
+              <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground/70 sm:text-[15px]">
+                IIT BHU Hackathon 2025 winner and IBM Student Ambassador, I regularly write on Medium about full-stack
+                development, AI tooling, and career strategies while leading technical teams and coding clubs.
+              </p>
+            </div>
 
-          {/* Core skills / chips */}
-          {/* Mobile: toggle to reveal skills with animation */}
-          <div className="w-full sm:hidden">
-            <button
-              type="button"
-              onClick={() => setShowMobileSkills((prev) => !prev)}
-              className="flex w-full items-center justify-between rounded-full border border-border/60 bg-background/90 px-4 py-2 text-[11px] font-medium text-muted-foreground shadow-sm shadow-primary/10 transition-colors hover:bg-accent/10"
-            >
-              <span>Core skills &amp; tools</span>
-              <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-primary">
-                {showMobileSkills ? "Hide" : "View"}
-              </span>
-            </button>
-            {showMobileSkills && (
-              <div className="mt-3 flex flex-wrap gap-2 text-xs animate-enter">
-                {coreChips.map((chip) => (
-                  <span
-                    key={chip}
-                    className="rounded-full border border-border/60 bg-background/95 px-3 py-1 text-muted-foreground shadow-sm shadow-primary/5 hover-scale"
-                  >
-                    {chip}
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* Tablet / desktop: always-visible chips */}
-          <div className="hidden flex-wrap gap-2 text-xs sm:flex sm:text-[13px]">
-            {coreChips.map((chip) => (
-              <span
-                key={chip}
-                className="rounded-full border border-border/60 bg-background/90 px-3 py-1 text-muted-foreground shadow-sm shadow-primary/5 hover-scale"
+            {/* Core skills / chips — Mobile toggle */}
+            <div className="w-full sm:hidden">
+              <button
+                type="button"
+                onClick={() => setShowMobileSkills((prev) => !prev)}
+                className="flex w-full items-center justify-between rounded-full border border-border/40 bg-card/80 px-4 py-2.5 text-[11px] font-medium text-muted-foreground shadow-sm transition-colors hover:bg-accent/10"
               >
-                {chip}
-              </span>
-            ))}
-          </div>
-
-          <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground sm:text-sm">
-            <span className="font-medium text-foreground">📞 +91 9140382662</span>
-            <span className="hidden h-1 w-1 rounded-full bg-border sm:inline-block" />
-            <a href="mailto:harshit840hs@gmail.com" className="font-medium text-primary hover:text-primary/80">
-              📧 harshit840hs@gmail.com
-            </a>
-            <span className="hidden h-1 w-1 rounded-full bg-border sm:inline-block" />
-            <a
-              href="https://linkedin.com/in/harshit-shah--"
-              target="_blank"
-              rel="noreferrer"
-              className="hover:underline"
-            >
-              🔗 linkedin.com/in/harshit-shah--
-            </a>
-            <span className="hidden h-1 w-1 rounded-full bg-border sm:inline-block" />
-            <a href="https://github.com/Nob1taaaa" target="_blank" rel="noreferrer" className="hover:underline">
-              💻 github.com/Nob1taaaa
-            </a>
-          </div>
-        </section>
-
-        {/* Snapshot of education & experience */}
-        <section className="space-y-2">
-          <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory pb-3 pr-6 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:pb-0 md:pr-0 scroll-smooth">
-            {/* Education first */}
-            <article className="min-w-[72%] flex-shrink-0 snap-center rounded-3xl border border-border/70 bg-background/95 p-5 shadow-sm shadow-primary/10 backdrop-blur-sm animate-enter [animation-delay:80ms] md:min-w-0">
-              <h2 className="text-sm font-semibold tracking-tight sm:text-base">Education &amp; Key Achievements</h2>
-              <ul className="mt-3 space-y-2 text-xs text-muted-foreground sm:text-sm">
-                <li>
-                  <span className="font-medium text-foreground">B.Tech Computer Science &amp; Engineering</span>
-                  <br />
-                  Noida International University,
-                  <br />
-                  2024–2027 (Expected), GPA 8.0/10.0
-                </li>
-                <li>
-                  <span className="font-medium text-foreground">🏆 Winner, IIT BHU Hackathon 2025</span>
-                  <br />
-                  Led a team to build a full-stack AI-powered product
-                  <br />
-                  using Hugging Face models and modern deployment.
-                </li>
-                <li>
-                  <span className="font-medium text-foreground">Published Writer (Medium)</span>
-                  <br />
-                  Writing on full-stack development,
-                  <br />
-                  AI integration, and career strategy.
-                </li>
-              </ul>
-            </article>
-
-            {/* Experience second */}
-            <article className="min-w-[72%] flex-shrink-0 snap-center rounded-3xl border border-border/70 bg-background/95 p-5 shadow-sm shadow-primary/10 backdrop-blur-sm animate-enter [animation-delay:140ms] md:min-w-0">
-              <h2 className="text-sm font-semibold tracking-tight sm:text-base">Experience &amp; Leadership</h2>
-              <ul className="mt-3 space-y-2 text-xs text-muted-foreground sm:text-sm">
-                <li>
-                  <span className="font-medium text-foreground">Full-Stack Developer &amp; AI Enthusiast</span> — Self-directed (2025)
-                </li>
-                <li>
-                  Building end-to-end web apps with AI integration,
-                  <br />
-                  Firebase/Supabase backends, and modern deployment workflows.
-                </li>
-                <li>
-                  <span className="font-medium text-foreground">Coding Club Lead</span> — Noida International University
-                  <br />
-                  Organizing hackathons,
-                  <br />
-                  mentoring 50+ students in web, AI tools, and Vercel deployment.
-                </li>
-                <li>
-                  <span className="font-medium text-foreground">IBM Student Ambassador</span>
-                  <br />
-                  Conducting workshops on full-stack development,
-                  <br />
-                  AI tools, and cloud deployment.
-                </li>
-              </ul>
-            </article>
-          </div>
-
-          {/* Mobile scroll hint */}
-          <p className="pl-1 text-[11px] text-muted-foreground sm:hidden">
-            <span className="mr-1 inline-block text-base align-middle pulse">↔</span>
-            Swipe sideways to see both cards — they will gently snap into place
-          </p>
-        </section>
-
-        {/* Tech stack & tools */}
-        <section className="grid gap-3 md:grid-cols-3 sm:gap-4">
-          <article className="rounded-2xl border border-border/70 bg-background/95 p-4 shadow-sm shadow-primary/10 backdrop-blur-sm animate-enter [animation-delay:80ms]">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground">Core stack</p>
-            <p className="mt-2 text-sm font-medium text-foreground">Frontend &amp; product UI</p>
-            <ul className="mt-2 space-y-1 text-xs text-muted-foreground">
-              <li>React, Vue, TypeScript, Tailwind CSS</li>
-              <li>Design systems, smooth motion, responsive layouts</li>
-            </ul>
-          </article>
-
-          <article className="rounded-2xl border border-border/70 bg-background/95 p-4 shadow-sm shadow-primary/10 backdrop-blur-sm animate-enter [animation-delay:120ms]">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground">AI &amp; backend</p>
-            <p className="mt-2 text-sm font-medium text-foreground">APIs, databases &amp; models</p>
-            <ul className="mt-2 space-y-1 text-xs text-muted-foreground">
-              <li>Firebase, Supabase, REST APIs</li>
-              <li>OpenAI, Hugging Face, automation workflows (n8n)</li>
-            </ul>
-          </article>
-
-          <article className="rounded-2xl border border-border/70 bg-background/95 p-4 shadow-sm shadow-primary/10 backdrop-blur-sm animate-enter [animation-delay:160ms]">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-              Shipping &amp; collaboration
-            </p>
-            <p className="mt-2 text-sm font-medium text-foreground">From idea to deployed product</p>
-            <ul className="mt-2 space-y-1 text-xs text-muted-foreground">
-              <li>Vercel deployment, GitHub, CI-style workflows</li>
-              <li>Hackathons, mentorship, clear documentation</li>
-            </ul>
-          </article>
-        </section>
-
-        {/* Projects moved to dedicated /projects page */}
-
-        {/* Featured publication */}
-        <section className="mt-4 animate-enter [animation-delay:220ms] sm:mt-6">
-          <div className="grid gap-4 rounded-3xl border border-border/70 bg-background/95 p-4 shadow-sm shadow-primary/15 backdrop-blur-sm md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] md:p-6 sm:gap-5">
-            <div className="space-y-2">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-primary">Published research</p>
-              <h2 className="text-base font-semibold tracking-tight sm:text-lg">
-                Adaptive Hybrid Intelligence Framework for Proactive Cross-Border Fraud Detection
-              </h2>
-              <p className="text-xs font-medium text-muted-foreground sm:text-sm">
-                Journal of Scientific Innovation and Advanced Research (JSIAR), 2025 — Peer-reviewed, multidisciplinary
-                journal.
-              </p>
-              <p className="text-xs text-muted-foreground sm:text-sm">
-                Co-designed and implemented a hybrid AI framework for detecting cross-border transaction fraud,
-                focusing on real-time risk scoring and improved detection accuracy.
-              </p>
+                <span>Core skills &amp; tools</span>
+                <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary">
+                  {showMobileSkills ? "Hide" : "View"}
+                </span>
+              </button>
+              {showMobileSkills && (
+                <div className="mt-3 flex flex-wrap gap-2 text-xs">
+                  {coreChips.map((chip, i) => (
+                    <span
+                      key={chip}
+                      className="rounded-full border border-border/30 bg-card/60 px-3 py-1.5 text-muted-foreground/70 shadow-sm transition-all duration-300 hover:border-primary/20 hover:text-foreground"
+                      style={{ animationDelay: `${i * 50}ms` }}
+                    >
+                      {chip}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
-            <div className="flex items-center justify-center">
-              <div className="relative w-full max-w-xs overflow-hidden rounded-2xl border border-border/60 bg-muted/40 shadow-md shadow-primary/20">
-                <img
-                  src={jsiarCertificate}
-                  alt="JSIAR publication certificate for Harshit Shah"
-                  className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                  loading="lazy"
-                />
+
+            {/* Desktop chips */}
+            <div className="hidden flex-wrap gap-2 text-xs sm:flex sm:text-[13px]">
+              {coreChips.map((chip, i) => (
+                <span
+                  key={chip}
+                  className="rounded-full border border-border/30 bg-card/60 px-3.5 py-1.5 text-muted-foreground/70 shadow-sm transition-all duration-300 hover:border-primary/20 hover:text-foreground hover:-translate-y-0.5"
+                >
+                  {chip}
+                </span>
+              ))}
+            </div>
+
+            {/* Contact row */}
+            <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground/60 sm:text-sm">
+              <span className="font-medium text-foreground/80">📞 +91 9140382662</span>
+              <span className="hidden h-1 w-1 rounded-full bg-border/60 sm:inline-block" />
+              <a href="mailto:harshit840hs@gmail.com" className="font-medium text-primary/80 hover:text-primary transition-colors">
+                📧 harshit840hs@gmail.com
+              </a>
+              <span className="hidden h-1 w-1 rounded-full bg-border/60 sm:inline-block" />
+              <a
+                href="https://linkedin.com/in/harshit-shah--"
+                target="_blank"
+                rel="noreferrer"
+                className="hover:text-foreground transition-colors"
+              >
+                🔗 linkedin.com/in/harshit-shah--
+              </a>
+              <span className="hidden h-1 w-1 rounded-full bg-border/60 sm:inline-block" />
+              <a href="https://github.com/Nob1taaaa" target="_blank" rel="noreferrer" className="hover:text-foreground transition-colors">
+                💻 github.com/Nob1taaaa
+              </a>
+            </div>
+          </section>
+        </FadeInSection>
+
+        {/* ─── Education & Experience ─── */}
+        <FadeInSection delay={80}>
+          <section className="space-y-3">
+            <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory pb-3 pr-6 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:pb-0 md:pr-0 scroll-smooth">
+              {/* Education */}
+              <article className="group min-w-[72%] flex-shrink-0 snap-center rounded-2xl border border-border/30 bg-card/70 p-6 shadow-sm backdrop-blur-sm transition-all duration-500 hover:border-primary/15 hover:shadow-[0_8px_30px_-12px_hsl(var(--primary)/0.12)] md:min-w-0">
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="text-lg">🎓</span>
+                  <h2 className="text-sm font-bold tracking-tight sm:text-base">Education &amp; Key Achievements</h2>
+                </div>
+                <ul className="space-y-3 text-xs text-muted-foreground/70 sm:text-sm">
+                  <li className="rounded-xl bg-background/50 p-3 transition-colors hover:bg-background/80">
+                    <span className="font-semibold text-foreground/85">B.Tech Computer Science &amp; Engineering</span>
+                    <br />
+                    <span className="text-muted-foreground/50">Noida International University, 2024–2027 · GPA 8.0/10.0</span>
+                  </li>
+                  <li className="rounded-xl bg-background/50 p-3 transition-colors hover:bg-background/80">
+                    <span className="font-semibold text-foreground/85">🏆 Winner, IIT BHU Hackathon 2025</span>
+                    <br />
+                    <span className="text-muted-foreground/50">Led a team to build a full-stack AI-powered product using Hugging Face models and modern deployment.</span>
+                  </li>
+                  <li className="rounded-xl bg-background/50 p-3 transition-colors hover:bg-background/80">
+                    <span className="font-semibold text-foreground/85">Published Writer (Medium)</span>
+                    <br />
+                    <span className="text-muted-foreground/50">Writing on full-stack development, AI integration, and career strategy.</span>
+                  </li>
+                </ul>
+              </article>
+
+              {/* Experience */}
+              <article className="group min-w-[72%] flex-shrink-0 snap-center rounded-2xl border border-border/30 bg-card/70 p-6 shadow-sm backdrop-blur-sm transition-all duration-500 hover:border-primary/15 hover:shadow-[0_8px_30px_-12px_hsl(var(--primary)/0.12)] md:min-w-0">
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="text-lg">💼</span>
+                  <h2 className="text-sm font-bold tracking-tight sm:text-base">Experience &amp; Leadership</h2>
+                </div>
+                <ul className="space-y-3 text-xs text-muted-foreground/70 sm:text-sm">
+                  <li className="rounded-xl bg-background/50 p-3 transition-colors hover:bg-background/80">
+                    <span className="font-semibold text-foreground/85">Full-Stack Developer &amp; AI Enthusiast</span>
+                    <span className="text-muted-foreground/40"> — Self-directed (2025)</span>
+                    <br />
+                    <span className="text-muted-foreground/50">Building end-to-end web apps with AI integration, Firebase/Supabase backends, and modern deployment workflows.</span>
+                  </li>
+                  <li className="rounded-xl bg-background/50 p-3 transition-colors hover:bg-background/80">
+                    <span className="font-semibold text-foreground/85">Coding Club Lead</span>
+                    <span className="text-muted-foreground/40"> — Noida International University</span>
+                    <br />
+                    <span className="text-muted-foreground/50">Organizing hackathons, mentoring 50+ students in web, AI tools, and Vercel deployment.</span>
+                  </li>
+                  <li className="rounded-xl bg-background/50 p-3 transition-colors hover:bg-background/80">
+                    <span className="font-semibold text-foreground/85">IBM Student Ambassador</span>
+                    <br />
+                    <span className="text-muted-foreground/50">Conducting workshops on full-stack development, AI tools, and cloud deployment.</span>
+                  </li>
+                </ul>
+              </article>
+            </div>
+
+            {/* Mobile scroll hint */}
+            <p className="pl-1 text-[11px] text-muted-foreground/40 sm:hidden">
+              <span className="mr-1 inline-block text-base align-middle pulse">↔</span>
+              Swipe sideways to see both cards
+            </p>
+          </section>
+        </FadeInSection>
+
+        {/* ─── Tech Stack ─── */}
+        <FadeInSection delay={100}>
+          <section className="grid gap-4 md:grid-cols-3">
+            {[
+              { icon: "⚡", label: "Core stack", title: "Frontend & product UI", items: ["React, Vue, TypeScript, Tailwind CSS", "Design systems, smooth motion, responsive layouts"] },
+              { icon: "🧠", label: "AI & backend", title: "APIs, databases & models", items: ["Firebase, Supabase, REST APIs", "OpenAI, Hugging Face, automation workflows (n8n)"] },
+              { icon: "🚀", label: "Shipping & collaboration", title: "From idea to deployed product", items: ["Vercel deployment, GitHub, CI-style workflows", "Hackathons, mentorship, clear documentation"] },
+            ].map((stack, i) => (
+              <article
+                key={stack.label}
+                className="group rounded-2xl border border-border/30 bg-card/70 p-5 shadow-sm backdrop-blur-sm transition-all duration-500 hover:border-primary/15 hover:shadow-[0_8px_30px_-12px_hsl(var(--primary)/0.12)] hover:-translate-y-1"
+              >
+                <div className="flex items-center gap-2">
+                  <span className="text-base">{stack.icon}</span>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-muted-foreground/50">{stack.label}</p>
+                </div>
+                <p className="mt-3 text-sm font-semibold text-foreground/85">{stack.title}</p>
+                <ul className="mt-2.5 space-y-1.5 text-xs text-muted-foreground/60">
+                  {stack.items.map((item) => (
+                    <li key={item} className="flex items-start gap-1.5">
+                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary/30" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </section>
+        </FadeInSection>
+
+        {/* ─── Featured Publication ─── */}
+        <FadeInSection delay={120}>
+          <section>
+            <div className="group grid gap-5 rounded-2xl border border-border/30 bg-card/70 p-5 shadow-sm backdrop-blur-sm transition-all duration-500 hover:border-primary/15 hover:shadow-[0_8px_30px_-12px_hsl(var(--primary)/0.12)] md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] md:p-7">
+              <div className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <span className="text-base">📄</span>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-primary/70">Published research</p>
+                </div>
+                <h2 className="text-base font-bold tracking-tight leading-snug sm:text-lg">
+                  Adaptive Hybrid Intelligence Framework for Proactive Cross-Border Fraud Detection
+                </h2>
+                <p className="text-xs font-medium text-muted-foreground/60 sm:text-sm">
+                  Journal of Scientific Innovation and Advanced Research (JSIAR), 2025 — Peer-reviewed, multidisciplinary journal.
+                </p>
+                <p className="text-xs text-muted-foreground/50 leading-relaxed sm:text-sm">
+                  Co-designed and implemented a hybrid AI framework for detecting cross-border transaction fraud,
+                  focusing on real-time risk scoring and improved detection accuracy.
+                </p>
+              </div>
+              <div className="flex items-center justify-center">
+                <div className="relative w-full max-w-xs overflow-hidden rounded-xl border border-border/20 bg-background/30 shadow-sm transition-all duration-500 group-hover:shadow-md group-hover:shadow-primary/10">
+                  <img
+                    src={jsiarCertificate}
+                    alt="JSIAR publication certificate for Harshit Shah"
+                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                    loading="lazy"
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </FadeInSection>
 
-        {/* Download resume */}
-        <section className="mt-4 animate-enter [animation-delay:260ms] sm:mt-6">
-          <div className="flex flex-col gap-3 rounded-3xl border border-border/60 bg-background/95 px-4 py-4 shadow-sm shadow-primary/15 backdrop-blur-sm md:flex-row md:items-center md:justify-between md:px-8 md:py-6">
-            <div className="space-y-2 max-w-md">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                Updated resume
-              </p>
-              <h2 className="text-base font-semibold tracking-tight sm:text-lg">Download my resume 📎</h2>
-              <p className="text-xs text-muted-foreground sm:text-sm">
-                Get the full, high-resolution PDF resume with clickable links to projects, education, experience, and
-                publications.
-              </p>
-            </div>
-            <div className="flex items-center gap-3">
-              <a href="/Harshit_Shah_resume_1.pdf" download>
-                <Button
-                  size="sm"
-                  className="inline-flex items-center gap-2 rounded-full px-5 shadow-md shadow-primary/20 transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/30"
-                >
-                  <Download className="h-4 w-4" />
-                  <span>Download resume (PDF)</span>
-                </Button>
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* Contact CTA */}
-        <section className="mt-4 animate-fade-in sm:mt-6">
-          <div className="rounded-3xl border border-border/60 bg-background/95 px-4 py-5 shadow-sm shadow-primary/10 backdrop-blur-sm md:px-8 md:py-7">
-            <h2 className="text-base font-semibold tracking-tight sm:text-lg">Liked what you saw?</h2>
-            <p className="mt-2 text-sm text-muted-foreground sm:text-base">
-              I&apos;m always excited to collaborate on full-stack and AI-powered products. Reach out and let&apos;s build
-              something impactful together.
-            </p>
-            <div className="mt-3 flex flex-wrap items-center gap-3 text-sm sm:mt-4">
-              <a href="mailto:harshit840hs@gmail.com">
-                <Button
-                  size="sm"
-                  className="rounded-full px-5 shadow-md shadow-primary/15 transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/25"
-                >
-                  Email me
-                </Button>
-              </a>
-              <p className="text-xs text-muted-foreground sm:text-sm">
-                or connect on
-                <a
-                  href="https://linkedin.com/in/harshit-shah--"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="ml-1 font-medium text-primary hover:text-primary/80"
-                >
-                  LinkedIn
+        {/* ─── Download Resume ─── */}
+        <FadeInSection delay={140}>
+          <section>
+            <div className="flex flex-col gap-4 rounded-2xl border border-border/30 bg-card/70 px-5 py-5 shadow-sm backdrop-blur-sm md:flex-row md:items-center md:justify-between md:px-8 md:py-7">
+              <div className="space-y-2 max-w-md">
+                <div className="flex items-center gap-2">
+                  <span className="text-base">📎</span>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-muted-foreground/50">
+                    Updated resume
+                  </p>
+                </div>
+                <h2 className="text-base font-bold tracking-tight sm:text-lg">Download my resume</h2>
+                <p className="text-xs text-muted-foreground/50 leading-relaxed sm:text-sm">
+                  Get the full, high-resolution PDF resume with clickable links to projects, education, experience, and
+                  publications.
+                </p>
+              </div>
+              <div className="flex items-center gap-3">
+                <a href="/Harshit_Shah_resume_1.pdf" download>
+                  <Button
+                    size="sm"
+                    className="inline-flex items-center gap-2 rounded-full px-5 shadow-md shadow-primary/15 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/25"
+                  >
+                    <Download className="h-4 w-4" />
+                    <span>Download resume (PDF)</span>
+                  </Button>
                 </a>
-              </p>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </FadeInSection>
+
+        {/* ─── Contact CTA ─── */}
+        <FadeInSection delay={160}>
+          <section>
+            <div className="rounded-2xl border border-border/30 bg-card/70 px-5 py-6 shadow-sm backdrop-blur-sm transition-all duration-500 hover:border-primary/15 md:px-8 md:py-8">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-lg">✨</span>
+                <h2 className="text-base font-bold tracking-tight sm:text-lg">Liked what you saw?</h2>
+              </div>
+              <p className="text-sm text-muted-foreground/60 leading-relaxed sm:text-[15px] max-w-xl">
+                I&apos;m always excited to collaborate on full-stack and AI-powered products. Reach out and let&apos;s build
+                something impactful together.
+              </p>
+              <div className="mt-4 flex flex-wrap items-center gap-3 text-sm sm:mt-5">
+                <a href="mailto:harshit840hs@gmail.com">
+                  <Button
+                    size="sm"
+                    className="rounded-full px-5 shadow-md shadow-primary/15 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/25"
+                  >
+                    Email me
+                  </Button>
+                </a>
+                <p className="text-xs text-muted-foreground/50 sm:text-sm">
+                  or connect on
+                  <a
+                    href="https://linkedin.com/in/harshit-shah--"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="ml-1 font-semibold text-primary/70 hover:text-primary transition-colors"
+                  >
+                    LinkedIn
+                  </a>
+                </p>
+              </div>
+            </div>
+          </section>
+        </FadeInSection>
       </main>
     </div>
   );
