@@ -476,8 +476,8 @@ const Portfolio = () => {
                 <div className="space-y-3">
                   <div className="inline-flex items-center gap-2.5 rounded-full border border-primary/15 bg-primary/5 px-3.5 py-1.5 backdrop-blur-sm">
                     <span className="relative flex h-2 w-2">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/60" />
-                      <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary/30" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-primary/60" />
                     </span>
                     <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary/70">AI Engineering</p>
                   </div>
