@@ -1,16 +1,8 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Download, Sparkles } from "lucide-react";
+import { Download, ArrowRight } from "lucide-react";
 import jsiarCertificate from "@/assets/jsiar-certificate.png";
-
-interface Project {
-  title: string;
-  description: string;
-  role: string;
-  tags: string[];
-  url: string;
-}
 
 const coreChips = [
   "React & Modern Frontend",
@@ -22,711 +14,412 @@ const coreChips = [
   "Vercel AI SDK / Docker",
 ];
 
-const projects: Project[] = [
-  {
-    title: "Trutalenza — AI Chatbot Platform",
-    description:
-      "Production-ready AI chatbot platform where users can create and manage assistants, with React UI, API layer, and Firebase backend. Integrated Hugging Face models and n8n workflows to automate support flows and reduce manual responses.",
-    role: "Full-Stack Developer · AI Engineer",
-    tags: ["React Frontend", "Firebase Backend", "Hugging Face AI", "n8n Automation", "Vercel Deployment", "REST APIs"],
-    url: "https://trutalenza.com",
-  },
-  {
-    title: "ChatPup —  Puppy sale 🐶",
-    description:
-      "AI text generation platform with Supabase database, authentication, and analytics. Combined OpenAI and Hugging Face models to deliver fast content generation with a clean UX and integrated payments for premium features.",
-    role: "Full-Stack Developer · AI Integration",
-    tags: ["Vue.js Frontend", "Supabase", "OpenAI & Hugging Face", "Auth & User Accounts", "Payments & Analytics", "Vercel"],
-    url: "https://chatpup.vercel.app",
-  },
-  {
-    title: "GPSVNS — My Skool Website 🏫",
-    description:
-      "AI-enabled web experience demonstrating automation workflows, clean UI, and reliable deployment pipelines. Focused on fast page loads, modern UI/UX, and cloud-native infrastructure for experiments and demos.",
-    role: "Full-Stack Developer",
-    tags: ["AI Integration", "Modern Web App", "Deployment Pipelines", "UI/UX", "Cloud-native"],
-    url: "https://gpsvns.vercel.app",
-  },
-  {
-    title: "TenderGift — Soft Gift Finder 🎁",
-    description:
-      "AI-powered gift recommendation app that takes a single heartfelt prompt about someone and suggests the perfect personalized gift. Features a dreamy UI, curated gift gallery, and affiliate-powered shopping links — all wrapped in a gentle, cozy experience.",
-    role: "Full-Stack Developer · AI Integration",
-    tags: ["AI Gift Matching", "Modern Frontend", "Curated Gallery", "Prompt-Based UX", "Affiliate Commerce", "Vercel Deployment"],
-    url: "https://tendergift.vercel.app",
-  },
-  {
-    title: "BeBrave — BoostHabits 💪",
-    description:
-      "A mood-aware wellness app that checks in on how you're feeling and delivers personalized boosts, habit tracking, and daily motivation. Features a soothing UI with mood selection, streak tracking, and gentle nudges to build positive routines.",
-    role: "Full-Stack Developer · Wellness Tech",
-    tags: ["Mood Tracking", "Habit Builder", "Modern Frontend", "Auth & Streaks", "Wellness UX", "Vercel Deployment"],
-    url: "https://bebrave.vercel.app/",
-  },
-  {
-    title: "GhatBanaras — Hidden Banaras 🔱",
-    description:
-      "AI-assisted travel platform for Varanasi that surfaces hidden ghats, local stories, and non-obvious experiences. Designed flows for OpenAI-powered trip planning, authentication, and a polished frontend for travelers, hotel owners, and tour guides.",
-    role: "Product Designer · Full-Stack Developer",
-    tags: ["OpenAI API", "Travel & Tourism", "Auth & User Profiles", "Hotel & Guide Contacts", "Banaras Local Insights", "Modern Frontend"],
-    url: "https://ghatbanaras.com",
-  },
-];
-
-/* ── Journey timeline data ── */
 const timelineEvents = [
-  { year: "2024", emoji: "🎓", title: "Started B.Tech CS at NIU", description: "Began Computer Science & Engineering at Noida International University with a focus on AI and web development.", side: "left" as const },
-  { year: "2024", emoji: "💻", title: "First Full-Stack Projects", description: "Built Trutalenza, ChatPup, and GPSVNS — shipping production apps with Firebase, Supabase, and AI integrations.", side: "right" as const },
-  { year: "2025", emoji: "🏆", title: "Won IIT BHU Hackathon", description: "Led a team to build an AI-powered product using Hugging Face models, winning against strong competition.", side: "left" as const },
-  { year: "2025", emoji: "🏢", title: "IBM Student Ambassador", description: "Selected as IBM Ambassador — conducting workshops on full-stack development, AI tools, and cloud deployment.", side: "right" as const },
-  { year: "2025", emoji: "📄", title: "Published in JSIAR", description: "Co-authored a peer-reviewed paper on Adaptive Hybrid Intelligence for Cross-Border Fraud Detection.", side: "left" as const },
-  { year: "2025", emoji: "🚀", title: "Coding Club Lead", description: "Leading hackathons, mentoring 50+ students in web dev, AI tooling, and modern deployment workflows.", side: "right" as const },
+  { year: "2024", title: "Started B.Tech CS at NIU", description: "Began Computer Science & Engineering at Noida International University with a focus on AI and web development." },
+  { year: "2024", title: "First Full-Stack Projects", description: "Built Trutalenza, ChatPup, and GPSVNS — shipping production apps with Firebase, Supabase, and AI integrations." },
+  { year: "2025", title: "Won IIT BHU Hackathon", description: "Led a team to build an AI-powered product using Hugging Face models, winning against strong competition." },
+  { year: "2025", title: "IBM Student Ambassador", description: "Selected as IBM Ambassador — conducting workshops on full-stack development, AI tools, and cloud deployment." },
+  { year: "2025", title: "Published in JSIAR", description: "Co-authored a peer-reviewed paper on Adaptive Hybrid Intelligence for Cross-Border Fraud Detection." },
+  { year: "2025", title: "Coding Club Lead", description: "Leading hackathons, mentoring 50+ students in web dev, AI tooling, and modern deployment workflows." },
 ];
 
-/* ── Scroll-reveal wrapper ── */
-const FadeInSection = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => {
+const aiSkills = [
+  { title: "LLM & Prompt Engineering", description: "System prompts, chain-of-thought reasoning, few-shot learning, and guardrails for GPT-4, Claude, Gemini.", tags: ["OpenAI API", "Claude API", "Gemini", "Prompt Design"] },
+  { title: "RAG & Vector Search", description: "Retrieval-augmented generation pipelines with document ingestion, chunking strategies, embedding models.", tags: ["LangChain", "Embeddings", "Vector DBs", "PDF Parsing"] },
+  { title: "AI Agents & Orchestration", description: "Multi-agent systems, tool-calling agents, autonomous workflows, and function-calling patterns.", tags: ["Agent Systems", "Tool Calling", "n8n", "Workflows"] },
+  { title: "Fine-Tuning & Adapters", description: "Supervised fine-tuning, LoRA adapters, dataset curation, and model evaluation.", tags: ["LoRA", "Fine-Tuning", "Hugging Face", "Datasets"] },
+  { title: "NLP & Text Processing", description: "Tokenization, text classification, NER, sentiment analysis, and structured extraction.", tags: ["NLP", "Classification", "NER", "Extraction"] },
+  { title: "AI Infrastructure", description: "Edge functions for AI inference, streaming responses, API gateway design, cost optimization.", tags: ["Edge Functions", "Streaming", "API Design", "Cost Ops"] },
+  { title: "Evaluation & Testing", description: "AI output evaluation, hallucination detection, A/B testing prompts, benchmarking.", tags: ["Eval Pipelines", "Benchmarks", "Quality", "Testing"] },
+  { title: "AI Safety & Ethics", description: "Content filtering, bias detection, responsible AI practices, safety guardrails.", tags: ["Safety", "Guardrails", "Bias Detection", "Ethics"] },
+  { title: "Production AI Deployment", description: "Model serving, monitoring, fallback strategies, and scaling for real users.", tags: ["Vercel AI SDK", "Docker", "Monitoring", "Scaling"] },
+];
+
+const aiTools = [
+  "GPT-4 / GPT-4o", "Claude 3.5 / Claude Code", "Gemini Pro", "Llama 3", "Mistral",
+  "Hugging Face Transformers", "LangChain", "Vercel AI SDK", "OpenAI API",
+  "Pinecone", "ChromaDB", "n8n Workflows", "Docker", "Edge Functions",
+  "TensorFlow.js", "Stable Diffusion", "Whisper API",
+];
+
+/* ── Scroll-reveal ── */
+const Reveal = ({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => {
   const [visible, setVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => setVisible(true), delay);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.08 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setTimeout(() => setVisible(true), delay); obs.disconnect(); } }, { threshold: 0.06 });
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
   }, [delay]);
-
   return (
-    <div
-      ref={ref}
-      className={`transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"} ${className}`}
-    >
+    <div ref={ref} className={`transition-all duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"} ${className}`}>
       {children}
     </div>
   );
 };
 
-/* ── 3D Tilt Card ── */
-const TiltCard = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [transform, setTransform] = useState("");
-  const [glowPos, setGlowPos] = useState({ x: 50, y: 50 });
-  const [isHovered, setIsHovered] = useState(false);
+/* ── Divider ── */
+const SectionDivider = () => <div className="h-px w-full bg-gradient-to-r from-border/50 via-border/20 to-transparent" />;
 
-  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width;
-    const y = (e.clientY - rect.top) / rect.height;
-    const rotateX = (y - 0.5) * -12;
-    const rotateY = (x - 0.5) * 12;
-    setTransform(`perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`);
-    setGlowPos({ x: x * 100, y: y * 100 });
-  }, []);
-
-  const handleMouseLeave = useCallback(() => {
-    setTransform("perspective(600px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)");
-    setIsHovered(false);
-  }, []);
-
-  return (
-    <div
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={handleMouseLeave}
-      className={`relative overflow-hidden transition-transform duration-300 ease-out ${className}`}
-      style={{ transform, transformStyle: "preserve-3d" }}
-    >
-      {/* Mouse-following glow */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 rounded-2xl"
-        style={{
-          opacity: isHovered ? 0.6 : 0,
-          background: `radial-gradient(400px circle at ${glowPos.x}% ${glowPos.y}%, hsl(var(--primary) / 0.12), transparent 60%)`,
-        }}
-      />
-      {children}
-    </div>
-  );
-};
-
-/* ── Timeline milestone ── */
-const TimelineMilestone = ({ event, index }: { event: typeof timelineEvents[0]; index: number }) => {
-  const [visible, setVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => setVisible(true), index * 150);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [index]);
-
-  return (
-    <div ref={ref} className={`relative flex items-start gap-4 sm:gap-0 ${event.side === "right" ? "sm:flex-row-reverse" : ""}`}>
-      {/* Content card */}
-      <div className={`flex-1 sm:w-[calc(50%-28px)] ${event.side === "right" ? "sm:pl-0 sm:pr-10" : "sm:pl-10 sm:pr-0"}`}>
-        <div
-          className={`rounded-xl border border-border/25 bg-card/60 p-4 shadow-sm backdrop-blur-sm transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] hover:border-primary/20 hover:shadow-[0_4px_20px_-6px_hsl(var(--primary)/0.15)]
-            ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
-          `}
-        >
-          <div className="flex items-center gap-2 mb-1.5">
-            <span className="text-lg">{event.emoji}</span>
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/60">{event.year}</span>
-          </div>
-          <h3 className="text-sm font-bold text-foreground/85 sm:text-[15px]">{event.title}</h3>
-          <p className="mt-1.5 text-[12px] leading-relaxed text-muted-foreground/55 sm:text-xs">{event.description}</p>
-        </div>
-      </div>
-
-      {/* Center dot — visible on desktop */}
-      <div className="hidden sm:flex absolute left-1/2 -translate-x-1/2 top-4 flex-col items-center z-10">
-        <div
-          className={`h-3.5 w-3.5 rounded-full border-2 border-primary/40 bg-card shadow-sm transition-all duration-500 ${visible ? "scale-100 bg-primary/20" : "scale-0"}`}
-        />
-      </div>
-
-      {/* Mobile dot */}
-      <div className="sm:hidden flex-shrink-0 mt-5">
-        <div
-          className={`h-3 w-3 rounded-full border-2 border-primary/40 bg-card shadow-sm transition-all duration-500 ${visible ? "scale-100 bg-primary/20" : "scale-0"}`}
-        />
-      </div>
-
-      {/* Spacer for the other side (desktop) */}
-      <div className="hidden sm:block flex-1 sm:w-[calc(50%-28px)]" />
-    </div>
-  );
-};
+/* ── Section Label ── */
+const SectionLabel = ({ children }: { children: React.ReactNode }) => (
+  <p className="font-serif text-[11px] font-medium italic tracking-wide text-muted-foreground/40 sm:text-xs">{children}</p>
+);
 
 const Portfolio = () => {
   const [showMobileSkills, setShowMobileSkills] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background via-background to-accent/5 text-foreground">
-      {/* Top nav */}
-      <header className="sticky top-0 z-20 border-b border-border/40 bg-background/90 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4 sm:px-6">
-          <Link to="/" className="text-lg font-semibold tracking-tight transition-colors hover:text-primary">
+    <div className="min-h-screen bg-background text-foreground">
+      {/* ── Minimal nav ── */}
+      <header className="sticky top-0 z-20 bg-background/95 backdrop-blur-sm">
+        <div className="mx-auto flex max-w-3xl items-center justify-between px-5 py-5 sm:px-8">
+          <Link to="/" className="font-serif text-xl font-medium tracking-tight transition-colors hover:text-primary">
             Harshit Shah
           </Link>
-          <nav className="flex items-center gap-4 text-xs text-muted-foreground sm:text-sm">
-            <Link to="/" className="story-link text-muted-foreground transition-colors hover:text-foreground">
-              Home
-            </Link>
-            <Link to="/projects" className="text-muted-foreground transition-colors hover:text-foreground">
-              Projects
-            </Link>
-            <Link to="/portfolio">
-              <Button
-                variant="ghost"
-                size="sm"
-                className="rounded-full px-4 text-xs font-medium hover:bg-primary/10 hover:text-primary"
-              >
-                Portfolio
-              </Button>
-            </Link>
+          <nav className="flex items-center gap-5 text-[13px] text-muted-foreground/60">
+            <Link to="/" className="transition-colors hover:text-foreground">Home</Link>
+            <Link to="/projects" className="transition-colors hover:text-foreground">Projects</Link>
+            <Link to="/portfolio" className="font-medium text-foreground">Portfolio</Link>
           </nav>
         </div>
+        <div className="mx-auto max-w-3xl px-5 sm:px-8"><SectionDivider /></div>
       </header>
 
-      <main className="relative mx-auto flex max-w-5xl flex-col gap-10 px-4 pb-12 pt-8 sm:gap-14 sm:px-6 sm:pb-20 sm:pt-14">
-        {/* Soft ambient glow */}
-        <div className="pointer-events-none absolute inset-x-0 -top-20 -z-10 h-80 bg-gradient-to-b from-primary/8 via-primary/3 to-transparent blur-3xl" />
+      <main className="mx-auto max-w-3xl px-5 pb-16 pt-12 sm:px-8 sm:pb-24 sm:pt-20">
 
-        {/* ─── Intro / Hero ─── */}
-        <FadeInSection>
-          <section className="space-y-6">
-            <span className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-card/80 px-4 py-2 text-[11px] font-medium text-muted-foreground shadow-sm backdrop-blur-sm">
-              <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-[10px] text-primary">
-                <Sparkles className="h-3 w-3" />
-              </span>
-              Full-Stack Developer · AI Engineer · Computer Science Student
-            </span>
-
-            <div className="space-y-4">
-              <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-muted-foreground/60">
-                Selected work
-              </p>
-              <h1 className="text-3xl font-bold tracking-tight leading-[1.15] sm:text-[2.75rem]">
-                Building thoughtful products with
-                <span className="ml-2 bg-gradient-to-r from-primary via-primary/70 to-primary/40 bg-clip-text text-transparent">
-                  AI &amp; the web
-                </span>
+        {/* ══════════════════════════════════════════
+            HERO — Editorial style
+        ══════════════════════════════════════════ */}
+        <Reveal>
+          <section className="space-y-8">
+            <div className="space-y-5">
+              <SectionLabel>Full-Stack Developer · AI Engineer · CS Student</SectionLabel>
+              <h1 className="font-serif text-[2.2rem] font-medium leading-[1.15] tracking-tight sm:text-[3.2rem]">
+                Building thoughtful
+                <br />
+                products with{" "}
+                <span className="italic text-primary/80">AI &amp; the web</span>
               </h1>
-              <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground/70 sm:text-[15px]">
-                I&apos;m a full-stack developer and AI engineer specializing in modern web apps with AI integration — from
-                Firebase/Supabase backends and automation workflows to clean, production-ready interfaces.
-              </p>
-              <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground/70 sm:text-[15px]">
-                IIT BHU Hackathon 2025 winner and IBM Student Ambassador, I regularly write on Medium about full-stack
-                development, AI tooling, and career strategies while leading technical teams and coding clubs.
-              </p>
+              <div className="max-w-xl space-y-3 text-[15px] leading-[1.8] text-muted-foreground/60 sm:text-base">
+                <p>
+                  I&apos;m a full-stack developer and AI engineer specializing in modern web apps with AI integration — from
+                  Firebase/Supabase backends and automation workflows to clean, production-ready interfaces.
+                </p>
+                <p>
+                  IIT BHU Hackathon 2025 winner and IBM Student Ambassador, I regularly write on Medium about full-stack
+                  development, AI tooling, and career strategies while leading technical teams and coding clubs.
+                </p>
+              </div>
             </div>
 
-            {/* Core skills / chips — Mobile toggle */}
+            {/* Skills — inline, understated */}
             <div className="w-full sm:hidden">
               <button
                 type="button"
                 onClick={() => setShowMobileSkills((prev) => !prev)}
-                className="flex w-full items-center justify-between rounded-full border border-border/40 bg-card/80 px-4 py-2.5 text-[11px] font-medium text-muted-foreground shadow-sm transition-colors hover:bg-accent/10"
+                className="flex w-full items-center justify-between border-b border-border/30 pb-2 text-[12px] font-medium text-muted-foreground/50"
               >
                 <span>Core skills &amp; tools</span>
-                <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary">
-                  {showMobileSkills ? "Hide" : "View"}
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-primary/60">
+                  {showMobileSkills ? "Hide" : "Show"}
                 </span>
               </button>
               {showMobileSkills && (
-                <div className="mt-3 flex flex-wrap gap-2 text-xs">
-                  {coreChips.map((chip, i) => (
-                    <span
-                      key={chip}
-                      className="rounded-full border border-border/30 bg-card/60 px-3 py-1.5 text-muted-foreground/70 shadow-sm transition-all duration-300 hover:border-primary/20 hover:text-foreground"
-                      style={{ animationDelay: `${i * 50}ms` }}
-                    >
-                      {chip}
-                    </span>
+                <div className="mt-3 flex flex-wrap gap-2 text-[11px]">
+                  {coreChips.map((chip) => (
+                    <span key={chip} className="border-b border-dotted border-border/40 pb-0.5 text-muted-foreground/50 transition-colors hover:text-foreground/70">{chip}</span>
                   ))}
                 </div>
               )}
             </div>
-
-            {/* Desktop chips */}
-            <div className="hidden flex-wrap gap-2 text-xs sm:flex sm:text-[13px]">
-              {coreChips.map((chip) => (
-                <span
-                  key={chip}
-                  className="rounded-full border border-border/30 bg-card/60 px-3.5 py-1.5 text-muted-foreground/70 shadow-sm transition-all duration-300 hover:border-primary/20 hover:text-foreground hover:-translate-y-0.5"
-                >
-                  {chip}
-                </span>
+            <div className="hidden sm:flex flex-wrap gap-x-4 gap-y-1 text-[13px]">
+              {coreChips.map((chip, i) => (
+                <span key={chip} className="border-b border-dotted border-border/30 pb-0.5 text-muted-foreground/45 transition-colors duration-300 hover:text-foreground/70 hover:border-primary/30">{chip}</span>
               ))}
             </div>
 
-            {/* Contact row */}
-            <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground/60 sm:text-sm">
-              <span className="font-medium text-foreground/80">📞 +91 9140382662</span>
-              <span className="hidden h-1 w-1 rounded-full bg-border/60 sm:inline-block" />
-              <a href="mailto:harshit840hs@gmail.com" className="font-medium text-primary/80 hover:text-primary transition-colors">
-                📧 harshit840hs@gmail.com
-              </a>
-              <span className="hidden h-1 w-1 rounded-full bg-border/60 sm:inline-block" />
-              <a href="https://linkedin.com/in/harshit-shah--" target="_blank" rel="noreferrer" className="hover:text-foreground transition-colors">
-                🔗 linkedin.com/in/harshit-shah--
-              </a>
-              <span className="hidden h-1 w-1 rounded-full bg-border/60 sm:inline-block" />
-              <a href="https://github.com/Nob1taaaa" target="_blank" rel="noreferrer" className="hover:text-foreground transition-colors">
-                💻 github.com/Nob1taaaa
-              </a>
+            {/* Contact — clean inline */}
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[13px] text-muted-foreground/45">
+              <span className="text-foreground/65">📞 +91 9140382662</span>
+              <a href="mailto:harshit840hs@gmail.com" className="text-primary/60 hover:text-primary transition-colors">📧 harshit840hs@gmail.com</a>
+              <a href="https://linkedin.com/in/harshit-shah--" target="_blank" rel="noreferrer" className="hover:text-foreground/65 transition-colors">🔗 LinkedIn</a>
+              <a href="https://github.com/Nob1taaaa" target="_blank" rel="noreferrer" className="hover:text-foreground/65 transition-colors">💻 GitHub</a>
             </div>
           </section>
-        </FadeInSection>
+        </Reveal>
 
-        {/* ─── My Journey Timeline ─── */}
-        <FadeInSection delay={60}>
-          <section className="space-y-6">
-            <div className="flex items-center gap-2">
-              <div className="h-1 w-6 rounded-full bg-primary/30" />
-              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground/50">My Journey</p>
-            </div>
-            <h2 className="text-xl font-bold tracking-tight sm:text-2xl">
-              From first line of code to shipping products ✦
+        <div className="my-14 sm:my-20"><SectionDivider /></div>
+
+        {/* ══════════════════════════════════════════
+            JOURNEY — Left-bordered editorial timeline
+        ══════════════════════════════════════════ */}
+        <Reveal delay={60}>
+          <section>
+            <SectionLabel>My Journey</SectionLabel>
+            <h2 className="mt-2 font-serif text-2xl font-medium tracking-tight sm:text-3xl">
+              From first line of code to shipping products
             </h2>
 
-            {/* Timeline */}
-            <div className="relative">
-              {/* Vertical line — desktop */}
-              <div className="hidden sm:block absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 bg-gradient-to-b from-primary/20 via-border/30 to-transparent" />
-              {/* Vertical line — mobile */}
-              <div className="sm:hidden absolute left-[5px] top-0 bottom-0 w-px bg-gradient-to-b from-primary/20 via-border/30 to-transparent" />
+            <div className="mt-10 space-y-0">
+              {timelineEvents.map((event, i) => (
+                <Reveal key={event.title} delay={i * 80}>
+                  <div className="group relative flex">
+                    {/* Left line + dot */}
+                    <div className="mr-6 flex flex-col items-center sm:mr-8">
+                      <div className="h-3 w-3 rounded-full border-2 border-primary/30 bg-background transition-colors duration-300 group-hover:border-primary/60 group-hover:bg-primary/10" />
+                      {i < timelineEvents.length - 1 && <div className="w-px flex-1 bg-border/25" />}
+                    </div>
+                    {/* Content */}
+                    <div className="pb-10">
+                      <span className="font-mono text-[11px] font-medium tracking-wider text-muted-foreground/35">{event.year}</span>
+                      <h3 className="mt-1 text-[15px] font-semibold text-foreground/80 sm:text-base">{event.title}</h3>
+                      <p className="mt-1.5 max-w-lg text-[13px] leading-[1.7] text-muted-foreground/45">{event.description}</p>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </section>
+        </Reveal>
 
-              <div className="space-y-6 sm:space-y-8">
-                {timelineEvents.map((event, i) => (
-                  <TimelineMilestone key={event.title} event={event} index={i} />
-                ))}
+        <div className="my-14 sm:my-20"><SectionDivider /></div>
+
+        {/* ══════════════════════════════════════════
+            EDUCATION & EXPERIENCE — Side by side, no cards
+        ══════════════════════════════════════════ */}
+        <Reveal delay={80}>
+          <section>
+            <div className="grid gap-12 md:grid-cols-2 md:gap-16">
+              {/* Education */}
+              <div>
+                <SectionLabel>Education &amp; Achievements</SectionLabel>
+                <h2 className="mt-2 font-serif text-xl font-medium tracking-tight sm:text-2xl">Academic foundation</h2>
+                <ul className="mt-6 space-y-6">
+                  <li className="border-l-2 border-primary/20 pl-4 transition-colors hover:border-primary/40">
+                    <p className="text-[14px] font-semibold text-foreground/80">B.Tech Computer Science &amp; Engineering</p>
+                    <p className="mt-1 text-[13px] text-muted-foreground/40">Noida International University, 2024–2027 · GPA 8.7/10.0</p>
+                  </li>
+                  <li className="border-l-2 border-primary/20 pl-4 transition-colors hover:border-primary/40">
+                    <p className="text-[14px] font-semibold text-foreground/80">🏆 Winner, IIT BHU Hackathon 2025</p>
+                    <p className="mt-1 text-[13px] text-muted-foreground/40">Led a team to build a full-stack AI-powered product using Hugging Face models and modern deployment.</p>
+                  </li>
+                  <li className="border-l-2 border-primary/20 pl-4 transition-colors hover:border-primary/40">
+                    <p className="text-[14px] font-semibold text-foreground/80">Published Writer (Medium)</p>
+                    <p className="mt-1 text-[13px] text-muted-foreground/40">Writing on full-stack development, AI integration, and career strategy.</p>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Experience */}
+              <div>
+                <SectionLabel>Experience &amp; Leadership</SectionLabel>
+                <h2 className="mt-2 font-serif text-xl font-medium tracking-tight sm:text-2xl">Professional path</h2>
+                <ul className="mt-6 space-y-6">
+                  <li className="border-l-2 border-primary/20 pl-4 transition-colors hover:border-primary/40">
+                    <p className="text-[14px] font-semibold text-foreground/80">Full-Stack Developer &amp; AI Enthusiast</p>
+                    <p className="mt-0.5 text-[11px] font-medium text-muted-foreground/30">Self-directed · 2025</p>
+                    <p className="mt-1 text-[13px] text-muted-foreground/40">Building end-to-end web apps with AI integration, Firebase/Supabase backends, and modern deployment workflows.</p>
+                  </li>
+                  <li className="border-l-2 border-primary/20 pl-4 transition-colors hover:border-primary/40">
+                    <p className="text-[14px] font-semibold text-foreground/80">Coding Club Lead</p>
+                    <p className="mt-0.5 text-[11px] font-medium text-muted-foreground/30">Noida International University</p>
+                    <p className="mt-1 text-[13px] text-muted-foreground/40">Organizing hackathons, mentoring 50+ students in web, AI tools, and Vercel deployment.</p>
+                  </li>
+                  <li className="border-l-2 border-primary/20 pl-4 transition-colors hover:border-primary/40">
+                    <p className="text-[14px] font-semibold text-foreground/80">IBM Student Ambassador</p>
+                    <p className="mt-1 text-[13px] text-muted-foreground/40">Conducting workshops on full-stack development, AI tools, and cloud deployment.</p>
+                  </li>
+                </ul>
               </div>
             </div>
           </section>
-        </FadeInSection>
+        </Reveal>
 
-        {/* ─── Education & Experience (with 3D tilt) ─── */}
-        <FadeInSection delay={80}>
-          <section className="space-y-3">
-            <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory pb-3 pr-6 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:pb-0 md:pr-0 scroll-smooth">
-              {/* Education */}
-              <TiltCard className="min-w-[72%] flex-shrink-0 snap-center md:min-w-0">
-                <article className="rounded-2xl border border-border/30 bg-card/70 p-6 shadow-sm backdrop-blur-sm h-full">
-                  <div className="flex items-center gap-2 mb-4">
-                    <span className="text-lg">🎓</span>
-                    <h2 className="text-sm font-bold tracking-tight sm:text-base">Education &amp; Key Achievements</h2>
-                  </div>
-                  <ul className="space-y-3 text-xs text-muted-foreground/70 sm:text-sm">
-                    <li className="rounded-xl bg-background/50 p-3 transition-colors hover:bg-background/80">
-                      <span className="font-semibold text-foreground/85">B.Tech Computer Science &amp; Engineering</span>
-                      <br />
-                      <span className="text-muted-foreground/50">Noida International University, 2024–2027 · GPA 8.7/10.0</span>
-                    </li>
-                    <li className="rounded-xl bg-background/50 p-3 transition-colors hover:bg-background/80">
-                      <span className="font-semibold text-foreground/85">🏆 Winner, IIT BHU Hackathon 2025</span>
-                      <br />
-                      <span className="text-muted-foreground/50">Led a team to build a full-stack AI-powered product using Hugging Face models and modern deployment.</span>
-                    </li>
-                    <li className="rounded-xl bg-background/50 p-3 transition-colors hover:bg-background/80">
-                      <span className="font-semibold text-foreground/85">Published Writer (Medium)</span>
-                      <br />
-                      <span className="text-muted-foreground/50">Writing on full-stack development, AI integration, and career strategy.</span>
-                    </li>
-                  </ul>
-                </article>
-              </TiltCard>
+        <div className="my-14 sm:my-20"><SectionDivider /></div>
 
-              {/* Experience */}
-              <TiltCard className="min-w-[72%] flex-shrink-0 snap-center md:min-w-0">
-                <article className="rounded-2xl border border-border/30 bg-card/70 p-6 shadow-sm backdrop-blur-sm h-full">
-                  <div className="flex items-center gap-2 mb-4">
-                    <span className="text-lg">💼</span>
-                    <h2 className="text-sm font-bold tracking-tight sm:text-base">Experience &amp; Leadership</h2>
-                  </div>
-                  <ul className="space-y-3 text-xs text-muted-foreground/70 sm:text-sm">
-                    <li className="rounded-xl bg-background/50 p-3 transition-colors hover:bg-background/80">
-                      <span className="font-semibold text-foreground/85">Full-Stack Developer &amp; AI Enthusiast</span>
-                      <span className="text-muted-foreground/40"> — Self-directed (2025)</span>
-                      <br />
-                      <span className="text-muted-foreground/50">Building end-to-end web apps with AI integration, Firebase/Supabase backends, and modern deployment workflows.</span>
-                    </li>
-                    <li className="rounded-xl bg-background/50 p-3 transition-colors hover:bg-background/80">
-                      <span className="font-semibold text-foreground/85">Coding Club Lead</span>
-                      <span className="text-muted-foreground/40"> — Noida International University</span>
-                      <br />
-                      <span className="text-muted-foreground/50">Organizing hackathons, mentoring 50+ students in web, AI tools, and Vercel deployment.</span>
-                    </li>
-                    <li className="rounded-xl bg-background/50 p-3 transition-colors hover:bg-background/80">
-                      <span className="font-semibold text-foreground/85">IBM Student Ambassador</span>
-                      <br />
-                      <span className="text-muted-foreground/50">Conducting workshops on full-stack development, AI tools, and cloud deployment.</span>
-                    </li>
-                  </ul>
-                </article>
-              </TiltCard>
-            </div>
+        {/* ══════════════════════════════════════════
+            TECH STACK — Horizontal with left border accent
+        ══════════════════════════════════════════ */}
+        <Reveal delay={100}>
+          <section>
+            <SectionLabel>Technical expertise</SectionLabel>
+            <h2 className="mt-2 font-serif text-xl font-medium tracking-tight sm:text-2xl">What I work with</h2>
 
-            {/* Mobile scroll hint */}
-            <p className="pl-1 text-[11px] text-muted-foreground/40 sm:hidden">
-              <span className="mr-1 inline-block text-base align-middle pulse">↔</span>
-              Swipe sideways to see both cards
-            </p>
-          </section>
-        </FadeInSection>
-
-        {/* ─── Tech Stack (with 3D tilt) ─── */}
-        <FadeInSection delay={100}>
-          <section className="grid gap-4 md:grid-cols-3">
-            {[
-              { icon: "⚡", label: "Core stack", title: "Frontend & product UI", items: ["React, Vue, TypeScript, Tailwind CSS", "Design systems, smooth motion, responsive layouts"] },
-              { icon: "🧠", label: "AI & backend", title: "APIs, databases & models", items: ["Firebase, Supabase, REST APIs", "OpenAI, Hugging Face, automation workflows (n8n)"] },
-              { icon: "🚀", label: "Shipping & collaboration", title: "From idea to deployed product", items: ["Vercel deployment, GitHub, CI-style workflows", "Hackathons, mentorship, clear documentation"] },
-            ].map((stack) => (
-              <TiltCard key={stack.label} className="rounded-2xl">
-                <article className="rounded-2xl border border-border/30 bg-card/70 p-5 shadow-sm backdrop-blur-sm h-full">
-                  <div className="flex items-center gap-2">
-                    <span className="text-base">{stack.icon}</span>
-                    <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-muted-foreground/50">{stack.label}</p>
-                  </div>
-                  <p className="mt-3 text-sm font-semibold text-foreground/85">{stack.title}</p>
-                  <ul className="mt-2.5 space-y-1.5 text-xs text-muted-foreground/60">
+            <div className="mt-8 grid gap-8 md:grid-cols-3">
+              {[
+                { label: "Frontend & product UI", items: ["React, Vue, TypeScript, Tailwind CSS", "Design systems, smooth motion, responsive layouts"] },
+                { label: "APIs, databases & models", items: ["Firebase, Supabase, REST APIs", "OpenAI, Hugging Face, automation workflows (n8n)"] },
+                { label: "From idea to deployed product", items: ["Vercel deployment, GitHub, CI-style workflows", "Hackathons, mentorship, clear documentation"] },
+              ].map((stack) => (
+                <div key={stack.label} className="border-l-2 border-primary/15 pl-4 transition-colors hover:border-primary/35">
+                  <p className="text-[14px] font-semibold text-foreground/75">{stack.label}</p>
+                  <ul className="mt-2 space-y-1">
                     {stack.items.map((item) => (
-                      <li key={item} className="flex items-start gap-1.5">
-                        <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-primary/30" />
-                        {item}
-                      </li>
+                      <li key={item} className="text-[13px] leading-[1.7] text-muted-foreground/40">{item}</li>
                     ))}
                   </ul>
-                </article>
-              </TiltCard>
-            ))}
-          </section>
-        </FadeInSection>
-
-        {/* ─── AI Engineering Expertise ─── */}
-        <FadeInSection delay={110}>
-          <section className="space-y-6">
-            <div className="flex items-center gap-2">
-              <div className="h-1 w-6 rounded-full bg-primary/30" />
-              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground/50">AI Engineering</p>
+                </div>
+              ))}
             </div>
-            <h2 className="text-xl font-bold tracking-tight sm:text-2xl">
-              Full-spectrum AI capabilities{" "}
-              <span className="bg-gradient-to-r from-primary via-primary/60 to-primary/30 bg-clip-text text-transparent">🧬</span>
+          </section>
+        </Reveal>
+
+        <div className="my-14 sm:my-20"><SectionDivider /></div>
+
+        {/* ══════════════════════════════════════════
+            AI ENGINEERING — Clean numbered list, editorial
+        ══════════════════════════════════════════ */}
+        <Reveal delay={110}>
+          <section>
+            <SectionLabel>AI Engineering</SectionLabel>
+            <h2 className="mt-2 font-serif text-xl font-medium tracking-tight sm:text-2xl">
+              Full-spectrum AI capabilities
             </h2>
-            <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground/60">
+            <p className="mt-3 max-w-xl text-[14px] leading-[1.7] text-muted-foreground/45">
               From prompt engineering to production ML pipelines — here&apos;s what I bring to the table as an AI engineer.
             </p>
 
-            {/* AI skills grid */}
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {[
-                {
-                  icon: "🧠",
-                  title: "LLM & Prompt Engineering",
-                  description: "Designing system prompts, chain-of-thought reasoning, few-shot learning, and guardrails for GPT-4, Claude, Gemini, and open-source models.",
-                  tags: ["OpenAI API", "Claude API", "Gemini", "Prompt Design"],
-                  accent: "hsl(250, 55%, 60%)",
-                  gradient: "from-[hsl(250,40%,94%)] to-[hsl(260,30%,97%)]",
-                },
-                {
-                  icon: "🔗",
-                  title: "RAG & Vector Search",
-                  description: "Building retrieval-augmented generation pipelines with document ingestion, chunking strategies, embedding models, and semantic search.",
-                  tags: ["LangChain", "Embeddings", "Vector DBs", "PDF Parsing"],
-                  accent: "hsl(175, 55%, 42%)",
-                  gradient: "from-[hsl(175,40%,92%)] to-[hsl(180,30%,96%)]",
-                },
-                {
-                  icon: "🤖",
-                  title: "AI Agents & Orchestration",
-                  description: "Multi-agent systems, tool-calling agents, autonomous workflows, and function-calling patterns for complex task execution.",
-                  tags: ["Agent Systems", "Tool Calling", "n8n", "Workflows"],
-                  accent: "hsl(210, 60%, 55%)",
-                  gradient: "from-[hsl(210,45%,93%)] to-[hsl(220,35%,96%)]",
-                },
-                {
-                  icon: "🎯",
-                  title: "Fine-Tuning & Adapters",
-                  description: "Supervised fine-tuning, LoRA adapters, dataset curation, and model evaluation for domain-specific performance.",
-                  tags: ["LoRA", "Fine-Tuning", "Hugging Face", "Datasets"],
-                  accent: "hsl(340, 55%, 55%)",
-                  gradient: "from-[hsl(340,40%,94%)] to-[hsl(350,30%,97%)]",
-                },
-                {
-                  icon: "📊",
-                  title: "NLP & Text Processing",
-                  description: "Tokenization, text classification, named entity recognition, sentiment analysis, and structured extraction from unstructured data.",
-                  tags: ["NLP", "Classification", "NER", "Extraction"],
-                  accent: "hsl(30, 65%, 50%)",
-                  gradient: "from-[hsl(30,50%,93%)] to-[hsl(35,40%,96%)]",
-                },
-                {
-                  icon: "⚡",
-                  title: "AI Infrastructure",
-                  description: "Edge functions for AI inference, streaming responses, API gateway design, rate limiting, caching, and cost optimization for AI APIs.",
-                  tags: ["Edge Functions", "Streaming", "API Design", "Cost Ops"],
-                  accent: "hsl(45, 70%, 48%)",
-                  gradient: "from-[hsl(45,50%,92%)] to-[hsl(50,40%,96%)]",
-                },
-                {
-                  icon: "🔍",
-                  title: "Evaluation & Testing",
-                  description: "AI output evaluation, hallucination detection, A/B testing prompts, benchmarking model performance, and quality assurance pipelines.",
-                  tags: ["Eval Pipelines", "Benchmarks", "Quality", "Testing"],
-                  accent: "hsl(145, 45%, 45%)",
-                  gradient: "from-[hsl(145,35%,93%)] to-[hsl(150,25%,96%)]",
-                },
-                {
-                  icon: "🛡️",
-                  title: "AI Safety & Ethics",
-                  description: "Content filtering, bias detection, responsible AI practices, safety guardrails, and compliance with AI governance frameworks.",
-                  tags: ["Safety", "Guardrails", "Bias Detection", "Ethics"],
-                  accent: "hsl(200, 55%, 50%)",
-                  gradient: "from-[hsl(200,40%,93%)] to-[hsl(210,30%,96%)]",
-                },
-                {
-                  icon: "🚀",
-                  title: "Production AI Deployment",
-                  description: "Taking AI from prototype to production — model serving, monitoring, fallback strategies, and scaling for real users.",
-                  tags: ["Vercel AI SDK", "Docker", "Monitoring", "Scaling"],
-                  accent: "hsl(270, 50%, 55%)",
-                  gradient: "from-[hsl(270,40%,94%)] to-[hsl(280,30%,97%)]",
-                },
-              ].map((skill) => (
-                <TiltCard key={skill.title} className="rounded-2xl">
-                  <article className="group relative flex flex-col h-full overflow-hidden rounded-2xl border border-border/20 bg-card/60 shadow-sm backdrop-blur-sm transition-all duration-500 hover:shadow-[0_8px_30px_-10px_var(--skill-accent)]"
-                    style={{ "--skill-accent": `${skill.accent}30` } as React.CSSProperties}
-                  >
-                    {/* Colored top bar */}
-                    <div className="h-1 w-full transition-all duration-500 group-hover:h-1.5" style={{ background: `linear-gradient(90deg, ${skill.accent}, transparent)` }} />
-                    
-                    <div className="flex flex-col flex-1 p-5">
-                      <div className="flex items-start gap-3">
-                        <div
-                          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${skill.gradient} text-lg shadow-sm transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-md`}
-                        >
-                          {skill.icon}
+            <div className="mt-10 space-y-0">
+              {aiSkills.map((skill, i) => (
+                <Reveal key={skill.title} delay={i * 60}>
+                  <div className="group border-b border-border/15 py-5 first:border-t transition-colors hover:bg-primary/[0.015]">
+                    <div className="flex items-start gap-4">
+                      <span className="mt-0.5 font-mono text-[12px] font-semibold text-muted-foreground/25 tabular-nums w-6 shrink-0">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <div className="flex-1">
+                        <h3 className="text-[15px] font-semibold text-foreground/75 sm:text-base">{skill.title}</h3>
+                        <p className="mt-1.5 max-w-lg text-[13px] leading-[1.7] text-muted-foreground/40">{skill.description}</p>
+                        <div className="mt-3 flex flex-wrap gap-2">
+                          {skill.tags.map((tag) => (
+                            <span key={tag} className="text-[10px] font-semibold uppercase tracking-wider text-primary/40 transition-colors group-hover:text-primary/60">
+                              {tag}
+                            </span>
+                          ))}
                         </div>
-                        <h3 className="text-[13px] font-bold tracking-tight text-foreground/85 sm:text-sm leading-snug mt-1.5">{skill.title}</h3>
-                      </div>
-                      <p className="mt-3 text-[11px] leading-[1.75] text-muted-foreground/55 sm:text-xs flex-1">{skill.description}</p>
-                      <div className="mt-4 flex flex-wrap gap-1.5">
-                        {skill.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="rounded-md px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider transition-all duration-300 sm:text-[10px]"
-                            style={{
-                              background: `${skill.accent}10`,
-                              color: skill.accent,
-                              border: `1px solid ${skill.accent}20`,
-                            }}
-                          >
-                            {tag}
-                          </span>
-                        ))}
                       </div>
                     </div>
-
-                    {/* Hover glow blob */}
-                    <div
-                      className="pointer-events-none absolute -bottom-8 -right-8 h-28 w-28 rounded-full opacity-0 blur-3xl transition-opacity duration-700 group-hover:opacity-25"
-                      style={{ background: skill.accent }}
-                    />
-                  </article>
-                </TiltCard>
+                  </div>
+                </Reveal>
               ))}
             </div>
 
-            {/* AI tools & models I work with */}
-            <div className="rounded-2xl border border-border/20 bg-card/50 p-6 backdrop-blur-sm">
-              <div className="flex items-center gap-2 mb-4">
-                <span className="text-base">🛠️</span>
-                <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-muted-foreground/45">Models &amp; tools I work with</p>
-                <span className="ml-auto text-[10px] font-semibold text-primary/40">17 tools</span>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  "GPT-4 / GPT-4o", "Claude 3.5 / Claude Code", "Gemini Pro", "Llama 3", "Mistral",
-                  "Hugging Face Transformers", "LangChain", "Vercel AI SDK", "OpenAI API",
-                  "Pinecone", "ChromaDB", "n8n Workflows", "Docker", "Edge Functions",
-                  "TensorFlow.js", "Stable Diffusion", "Whisper API",
-                ].map((tool, i) => (
-                  <span
-                    key={tool}
-                    className="rounded-full border border-border/20 bg-background/40 px-3.5 py-1.5 text-[10px] font-semibold text-muted-foreground/55 transition-all duration-300 hover:border-primary/25 hover:text-foreground/80 hover:-translate-y-0.5 hover:shadow-sm sm:text-[11px]"
-                  >
+            {/* Tools */}
+            <div className="mt-10">
+              <SectionLabel>Models &amp; tools I work with · {aiTools.length} tools</SectionLabel>
+              <div className="mt-4 flex flex-wrap gap-x-3 gap-y-2 text-[12px] sm:text-[13px]">
+                {aiTools.map((tool) => (
+                  <span key={tool} className="text-muted-foreground/35 transition-colors duration-300 hover:text-foreground/60 cursor-default">
                     {tool}
                   </span>
                 ))}
               </div>
             </div>
           </section>
-        </FadeInSection>
+        </Reveal>
 
-        {/* ─── Featured Publication ─── */}
-        <FadeInSection delay={120}>
-          <section>
-            <TiltCard className="rounded-2xl">
-              <div className="grid gap-5 rounded-2xl border border-border/30 bg-card/70 p-5 shadow-sm backdrop-blur-sm md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] md:p-7">
-                <div className="space-y-3">
-                  <div className="flex items-center gap-2">
-                    <span className="text-base">📄</span>
-                    <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-primary/70">Published research</p>
-                  </div>
-                  <h2 className="text-base font-bold tracking-tight leading-snug sm:text-lg">
-                    Adaptive Hybrid Intelligence Framework for Proactive Cross-Border Fraud Detection
-                  </h2>
-                  <p className="text-xs font-medium text-muted-foreground/60 sm:text-sm">
-                    Journal of Scientific Innovation and Advanced Research (JSIAR), 2025 — Peer-reviewed, multidisciplinary journal.
-                  </p>
-                  <p className="text-xs text-muted-foreground/50 leading-relaxed sm:text-sm">
-                    Co-designed and implemented a hybrid AI framework for detecting cross-border transaction fraud,
-                    focusing on real-time risk scoring and improved detection accuracy.
-                  </p>
-                </div>
-                <div className="flex items-center justify-center">
-                  <div className="relative w-full max-w-xs overflow-hidden rounded-xl border border-border/20 bg-background/30 shadow-sm">
-                    <img
-                      src={jsiarCertificate}
-                      alt="JSIAR publication certificate for Harshit Shah"
-                      className="h-full w-full object-cover transition-transform duration-700 ease-out hover:scale-[1.03]"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-              </div>
-            </TiltCard>
-          </section>
-        </FadeInSection>
+        <div className="my-14 sm:my-20"><SectionDivider /></div>
 
-        {/* ─── Download Resume ─── */}
-        <FadeInSection delay={140}>
+        {/* ══════════════════════════════════════════
+            PUBLICATION — Magazine layout
+        ══════════════════════════════════════════ */}
+        <Reveal delay={120}>
           <section>
-            <div className="flex flex-col gap-4 rounded-2xl border border-border/30 bg-card/70 px-5 py-5 shadow-sm backdrop-blur-sm md:flex-row md:items-center md:justify-between md:px-8 md:py-7">
-              <div className="space-y-2 max-w-md">
-                <div className="flex items-center gap-2">
-                  <span className="text-base">📎</span>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-muted-foreground/50">
-                    Updated resume
-                  </p>
-                </div>
-                <h2 className="text-base font-bold tracking-tight sm:text-lg">Download my resume</h2>
-                <p className="text-xs text-muted-foreground/50 leading-relaxed sm:text-sm">
-                  Get the full, high-resolution PDF resume with clickable links to projects, education, experience, and
-                  publications.
+            <SectionLabel>Published research</SectionLabel>
+            <div className="mt-4 grid gap-8 md:grid-cols-[1.4fr_1fr] items-start">
+              <div className="space-y-3">
+                <h2 className="font-serif text-lg font-medium tracking-tight leading-snug sm:text-xl">
+                  Adaptive Hybrid Intelligence Framework for Proactive Cross-Border Fraud Detection
+                </h2>
+                <p className="text-[13px] font-medium text-muted-foreground/45">
+                  Journal of Scientific Innovation and Advanced Research (JSIAR), 2025
+                </p>
+                <p className="text-[13px] leading-[1.7] text-muted-foreground/40">
+                  Co-designed and implemented a hybrid AI framework for detecting cross-border transaction fraud,
+                  focusing on real-time risk scoring and improved detection accuracy.
                 </p>
               </div>
-              <div className="flex items-center gap-3">
-                <a href="/Harshit_Shah_resume_1.pdf" download>
-                  <Button
-                    size="sm"
-                    className="inline-flex items-center gap-2 rounded-full px-5 shadow-md shadow-primary/15 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/25"
-                  >
-                    <Download className="h-4 w-4" />
-                    <span>Download resume (PDF)</span>
-                  </Button>
-                </a>
+              <div className="overflow-hidden border border-border/15 transition-shadow duration-500 hover:shadow-lg hover:shadow-primary/5">
+                <img
+                  src={jsiarCertificate}
+                  alt="JSIAR publication certificate for Harshit Shah"
+                  className="h-full w-full object-cover transition-transform duration-700 ease-out hover:scale-[1.02]"
+                  loading="lazy"
+                />
               </div>
             </div>
           </section>
-        </FadeInSection>
+        </Reveal>
 
-        {/* ─── Contact CTA ─── */}
-        <FadeInSection delay={160}>
-          <section>
-            <div className="rounded-2xl border border-border/30 bg-card/70 px-5 py-6 shadow-sm backdrop-blur-sm transition-all duration-500 hover:border-primary/15 md:px-8 md:py-8">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-lg">✨</span>
-                <h2 className="text-base font-bold tracking-tight sm:text-lg">Liked what you saw?</h2>
-              </div>
-              <p className="text-sm text-muted-foreground/60 leading-relaxed sm:text-[15px] max-w-xl">
-                I&apos;m always excited to collaborate on full-stack and AI-powered products. Reach out and let&apos;s build
-                something impactful together.
+        <div className="my-14 sm:my-20"><SectionDivider /></div>
+
+        {/* ══════════════════════════════════════════
+            RESUME
+        ══════════════════════════════════════════ */}
+        <Reveal delay={140}>
+          <section className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div>
+              <SectionLabel>Updated resume</SectionLabel>
+              <h2 className="mt-2 font-serif text-lg font-medium tracking-tight sm:text-xl">Download my resume</h2>
+              <p className="mt-2 max-w-md text-[13px] leading-[1.7] text-muted-foreground/40">
+                Get the full, high-resolution PDF resume with clickable links to projects, education, experience, and publications.
               </p>
-              <div className="mt-4 flex flex-wrap items-center gap-3 text-sm sm:mt-5">
-                <a href="mailto:harshit840hs@gmail.com">
-                  <Button
-                    size="sm"
-                    className="rounded-full px-5 shadow-md shadow-primary/15 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/25"
-                  >
-                    Email me
-                  </Button>
-                </a>
-                <p className="text-xs text-muted-foreground/50 sm:text-sm">
-                  or connect on
-                  <a
-                    href="https://linkedin.com/in/harshit-shah--"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="ml-1 font-semibold text-primary/70 hover:text-primary transition-colors"
-                  >
-                    LinkedIn
-                  </a>
-                </p>
-              </div>
+            </div>
+            <a href="/Harshit_Shah_resume_1.pdf" download>
+              <Button
+                size="sm"
+                variant="outline"
+                className="group inline-flex items-center gap-2 border-foreground/15 px-5 text-[13px] font-medium text-foreground/60 transition-all hover:border-foreground/30 hover:text-foreground"
+              >
+                <Download className="h-4 w-4" />
+                Download PDF
+                <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-0.5" />
+              </Button>
+            </a>
+          </section>
+        </Reveal>
+
+        <div className="my-14 sm:my-20"><SectionDivider /></div>
+
+        {/* ══════════════════════════════════════════
+            CONTACT
+        ══════════════════════════════════════════ */}
+        <Reveal delay={160}>
+          <section>
+            <h2 className="font-serif text-2xl font-medium tracking-tight sm:text-3xl">
+              Liked what you saw?
+            </h2>
+            <p className="mt-3 max-w-xl text-[15px] leading-[1.7] text-muted-foreground/50">
+              I&apos;m always excited to collaborate on full-stack and AI-powered products. Reach out and let&apos;s build
+              something impactful together.
+            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-4">
+              <a href="mailto:harshit840hs@gmail.com">
+                <Button
+                  size="sm"
+                  className="px-6 text-[13px] font-medium transition-all hover:-translate-y-0.5"
+                >
+                  Email me
+                </Button>
+              </a>
+              <a
+                href="https://linkedin.com/in/harshit-shah--"
+                target="_blank"
+                rel="noreferrer"
+                className="text-[13px] font-medium text-primary/50 transition-colors hover:text-primary"
+              >
+                or connect on LinkedIn →
+              </a>
             </div>
           </section>
-        </FadeInSection>
+        </Reveal>
+
+        <div className="mt-20 mb-4 text-center">
+          <p className="font-serif text-[12px] italic text-muted-foreground/25">
+            Crafted with care · Harshit Shah · {new Date().getFullYear()}
+          </p>
+        </div>
       </main>
     </div>
   );
