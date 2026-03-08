@@ -47,7 +47,7 @@ const Index = () => {
 
           <div className="space-y-4">
             <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-muted-foreground">
-              AI Engineering & Web Dev
+              UI / UX Designer
             </p>
             <h1 className="text-xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-[3.1rem]">
                Hey There,
@@ -133,10 +133,10 @@ const Index = () => {
 
             <div className="rounded-3xl border border-border/70 bg-background/95 px-3 py-2.5 shadow-sm shadow-primary/10 backdrop-blur-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-md sm:px-5 sm:py-4">
               <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground sm:text-[11px]">
-                What I do
+                Specialized in
               </p>
               <div className="mt-2 flex flex-wrap gap-1.5 text-[11px] sm:mt-2.5 sm:gap-2 sm:text-xs">
-                {["Full-Stack Builder", "AI Engineer", "Cloud Native", "Hackathon Champion", "Agile Development"].map((chip) => (
+                {["UI Design", "UX Research", "Prototyping", "Designing"].map((chip) => (
                   <span
                     key={chip}
                     className="rounded-full bg-muted px-2.5 py-1 text-muted-foreground transition-colors hover:bg-muted/80 sm:px-3"
