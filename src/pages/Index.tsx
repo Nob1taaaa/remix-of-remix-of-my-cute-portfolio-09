@@ -136,7 +136,7 @@ const Index = () => {
                 What I do
               </p>
               <div className="mt-2 flex flex-wrap gap-1.5 text-[11px] sm:mt-2.5 sm:gap-2 sm:text-xs">
-                {["Full-Stack Builder", "AI Engineering", "Cloud Native", "Hackathon Champion", "Rapid Delivery"].map((chip) => (
+                {["Full-Stack Builder", "AI Engineer", "Cloud Native", "Hackathon Champion", "Rapid Delivery"].map((chip) => (
                   <span
                     key={chip}
                     className="rounded-full bg-muted px-2.5 py-1 text-muted-foreground transition-colors hover:bg-muted/80 sm:px-3"
