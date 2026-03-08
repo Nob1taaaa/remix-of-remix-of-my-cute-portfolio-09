@@ -495,7 +495,7 @@ const Portfolio = () => {
               ].map((skill) => (
                 <div
                   key={skill.title}
-                  className="group relative overflow-hidden rounded-2xl border border-border/10 bg-card/30 p-5 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-border/25 hover:bg-card/50 hover:shadow-[0_8px_40px_-12px_var(--glow)]"
+                  className="group relative overflow-hidden rounded-2xl border border-border/40 bg-card/70 p-5 shadow-md backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-border/60 hover:bg-card/85 hover:shadow-[0_8px_40px_-12px_var(--glow)]"
                   style={{ "--glow": `${skill.glow}40` } as React.CSSProperties}
                 >
                   {/* Glass shine line */}
