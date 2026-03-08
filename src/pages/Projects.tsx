@@ -100,6 +100,30 @@ const projects = [
     gradient: "from-[hsl(20,60%,92%)] to-[hsl(25,45%,96%)]",
     accentColor: "hsl(20, 65%, 50%)",
   },
+  {
+    title: "Split",
+    subtitle: "Expense Splitter",
+    description:
+      "A clean expense-splitting app that lets you create or join groups with invite codes, track shared expenses, and settle balances effortlessly.",
+    role: "Full-Stack Developer",
+    tags: ["Expense Tracking", "Groups", "Invite Codes", "Clean UX", "Vercel"],
+    url: "https://split-two-wheat.vercel.app",
+    emoji: "💸",
+    gradient: "from-[hsl(160,50%,92%)] to-[hsl(170,40%,96%)]",
+    accentColor: "hsl(160, 55%, 42%)",
+  },
+  {
+    title: "StudentHelp",
+    subtitle: "Student Resource Hub",
+    description:
+      "A student-focused platform connecting learners with helpful resources, tools, and community support with a clean, accessible interface.",
+    role: "Full-Stack Developer",
+    tags: ["Student Tools", "Resources", "Community", "Modern UI", "Vercel"],
+    url: "https://studentshelp.vercel.app",
+    emoji: "🎓",
+    gradient: "from-[hsl(230,50%,93%)] to-[hsl(240,40%,96%)]",
+    accentColor: "hsl(230, 55%, 55%)",
+  },
 ];
 
 const ProjectCard = ({ project, index }: { project: (typeof projects)[0]; index: number }) => {
