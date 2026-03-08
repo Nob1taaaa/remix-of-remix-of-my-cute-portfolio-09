@@ -508,7 +508,7 @@ const Portfolio = () => {
                   />
 
                   {/* Icon */}
-                  <div className="relative mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-border/10 bg-background/40 text-2xl shadow-sm backdrop-blur-sm transition-all duration-500 group-hover:scale-110 group-hover:border-border/20 group-hover:shadow-lg group-hover:rotate-3">
+                  <div className="relative mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-border/30 bg-background/60 text-2xl shadow-sm backdrop-blur-sm transition-all duration-500 group-hover:scale-110 group-hover:border-border/40 group-hover:shadow-lg group-hover:rotate-3">
                     {skill.icon}
                   </div>
 
