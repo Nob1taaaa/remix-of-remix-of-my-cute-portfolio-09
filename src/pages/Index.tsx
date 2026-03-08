@@ -47,7 +47,7 @@ const Index = () => {
 
           <div className="space-y-4">
             <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-muted-foreground">
-              UI / UX Designer
+              AI Engineering & Web Dev
             </p>
             <h1 className="text-xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-[3.1rem]">
                Hey There,
