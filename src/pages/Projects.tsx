@@ -124,6 +124,18 @@ const projects = [
     gradient: "from-[hsl(230,50%,93%)] to-[hsl(240,40%,96%)]",
     accentColor: "hsl(230, 55%, 55%)",
   },
+  {
+    title: "DiffusionAI",
+    subtitle: "AI Image Generation",
+    description:
+      "An AI-powered image generation platform leveraging diffusion models to create stunning visuals from text prompts with an intuitive, modern interface.",
+    role: "Full-Stack Developer · AI Engineer",
+    tags: ["AI", "Diffusion Models", "Image Generation", "Modern UI", "Vercel"],
+    url: "https://diffusionai.vercel.app/",
+    emoji: "🎨",
+    gradient: "from-[hsl(280,50%,93%)] to-[hsl(290,40%,96%)]",
+    accentColor: "hsl(280, 55%, 55%)",
+  },
 ];
 
 const ProjectCard = ({ project, index }: { project: (typeof projects)[0]; index: number }) => {

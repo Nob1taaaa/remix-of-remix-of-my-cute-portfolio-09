@@ -95,6 +95,14 @@ const projects: Project[] = [
     tags: ["NLP", "Fine-tuning", "LoRA", "AI Agents", "Lovable Cloud", "Edge Functions"],
     url: "https://aimlmodel.vercel.app/",
   },
+  {
+    title: "DiffusionAI 🎨",
+    description:
+      "An AI-powered image generation platform leveraging diffusion models to create stunning visuals from text prompts with an intuitive, modern interface.",
+    role: "Full-Stack Developer · AI Engineer",
+    tags: ["AI", "Diffusion Models", "Image Generation", "Modern UI", "Vercel"],
+    url: "https://diffusionai.vercel.app/",
+  },
 ];
 
 /* ── Journey timeline data ── */
