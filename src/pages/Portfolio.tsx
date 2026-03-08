@@ -466,18 +466,42 @@ const Portfolio = () => {
         <FadeInSection delay={110}>
           <section className="space-y-8">
             {/* Section header */}
-            <div className="space-y-3">
-              <div className="flex items-center gap-2">
-                <div className="h-1 w-6 rounded-full bg-primary/30" />
-                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-muted-foreground/50">AI Engineering</p>
+            <div className="relative overflow-hidden rounded-2xl border border-border/30 bg-gradient-to-br from-card/80 via-card/60 to-background/40 p-8 backdrop-blur-xl sm:p-10">
+              {/* Ambient glow */}
+              <div className="pointer-events-none absolute -top-20 -left-20 h-40 w-40 rounded-full bg-primary/8 blur-[80px]" />
+              <div className="pointer-events-none absolute -bottom-16 -right-16 h-36 w-36 rounded-full bg-primary/6 blur-[70px]" />
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-foreground/10 to-transparent" />
+
+              <div className="relative flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+                <div className="space-y-3">
+                  <div className="inline-flex items-center gap-2.5 rounded-full border border-primary/15 bg-primary/5 px-3.5 py-1.5 backdrop-blur-sm">
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/60" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                    </span>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary/70">AI Engineering</p>
+                  </div>
+                  <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+                    Full-spectrum AI
+                    <br />
+                    <span className="bg-gradient-to-r from-foreground via-foreground/70 to-muted-foreground/50 bg-clip-text text-transparent">capabilities 🧬</span>
+                  </h2>
+                  <p className="max-w-lg text-sm leading-relaxed text-muted-foreground/60">
+                    From prompt engineering to production ML pipelines — here&apos;s what I bring to the table.
+                  </p>
+                </div>
+                <div className="flex items-center gap-3 text-muted-foreground/40">
+                  <div className="flex flex-col items-center gap-1">
+                    <span className="text-2xl font-bold text-foreground/80">9</span>
+                    <span className="text-[9px] font-semibold uppercase tracking-widest">Domains</span>
+                  </div>
+                  <div className="h-8 w-px bg-border/40" />
+                  <div className="flex flex-col items-center gap-1">
+                    <span className="text-2xl font-bold text-foreground/80">17</span>
+                    <span className="text-[9px] font-semibold uppercase tracking-widest">Tools</span>
+                  </div>
+                </div>
               </div>
-              <h2 className="text-xl font-bold tracking-tight sm:text-2xl">
-                Full-spectrum AI capabilities{" "}
-                <span className="bg-gradient-to-r from-primary via-primary/60 to-primary/30 bg-clip-text text-transparent">🧬</span>
-              </h2>
-              <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground/60">
-                From prompt engineering to production ML pipelines — here&apos;s what I bring to the table as an AI engineer.
-              </p>
             </div>
 
             {/* Glassmorphism grid */}
