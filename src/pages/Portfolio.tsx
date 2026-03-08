@@ -527,7 +527,7 @@ const Portfolio = () => {
                     {skill.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full border border-border/10 bg-background/20 px-2.5 py-1 text-[9px] font-semibold tracking-wider text-muted-foreground/45 backdrop-blur-sm transition-all duration-300 group-hover:border-border/20 group-hover:text-muted-foreground/70 sm:text-[10px]"
+                        className="rounded-full border border-border/30 bg-background/40 px-2.5 py-1 text-[9px] font-semibold tracking-wider text-muted-foreground/70 backdrop-blur-sm transition-all duration-300 group-hover:border-border/40 group-hover:text-muted-foreground/90 sm:text-[10px]"
                       >
                         {tag}
                       </span>
