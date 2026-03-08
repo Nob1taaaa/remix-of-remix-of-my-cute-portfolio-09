@@ -639,15 +639,8 @@ const Portfolio = () => {
                 </div>
               ))}
             </div>
-                    {/* Hover glow blob */}
-                    <div
-                      className="pointer-events-none absolute -bottom-8 -right-8 h-28 w-28 rounded-full opacity-0 blur-3xl transition-opacity duration-700 group-hover:opacity-25"
-                      style={{ background: skill.accent }}
-                    />
-                  </article>
-                </TiltCard>
-              ))}
-            </div>
+
+
 
             {/* AI tools & models I work with */}
             <div className="rounded-2xl border border-border/20 bg-card/50 p-6 backdrop-blur-sm">
