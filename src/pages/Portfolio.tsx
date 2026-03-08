@@ -560,7 +560,7 @@ const Portfolio = () => {
                 ].map((tool) => (
                   <span
                     key={tool}
-                    className="rounded-full border border-border/10 bg-background/20 px-3.5 py-1.5 text-[10px] font-semibold text-muted-foreground/50 backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:bg-background/40 hover:text-foreground/80 hover:-translate-y-0.5 hover:shadow-sm sm:text-[11px]"
+                    className="rounded-full border border-border/30 bg-background/40 px-3.5 py-1.5 text-[10px] font-semibold text-muted-foreground/70 backdrop-blur-sm transition-all duration-300 hover:border-primary/30 hover:bg-background/60 hover:text-foreground/90 hover:-translate-y-0.5 hover:shadow-sm sm:text-[11px]"
                   >
                     {tool}
                   </span>
