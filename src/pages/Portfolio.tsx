@@ -518,7 +518,7 @@ const Portfolio = () => {
                   </h3>
 
                   {/* Description */}
-                  <p className="relative mt-2 text-[11.5px] leading-[1.7] text-muted-foreground/50 sm:text-xs">
+                  <p className="relative mt-2 text-[11.5px] leading-[1.7] text-muted-foreground/80 sm:text-xs">
                     {skill.description}
                   </p>
 
