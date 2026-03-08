@@ -279,7 +279,7 @@ const Portfolio = () => {
                   <li className="rounded-xl bg-background/50 p-3 transition-colors hover:bg-background/80">
                     <span className="font-semibold text-foreground/85">B.Tech Computer Science &amp; Engineering</span>
                     <br />
-                    <span className="text-muted-foreground/50">Noida International University, 2024–2027 · GPA 8.0/10.0</span>
+                    <span className="text-muted-foreground/50">Noida International University, 2024–2027 · GPA 8.7/10.0</span>
                   </li>
                   <li className="rounded-xl bg-background/50 p-3 transition-colors hover:bg-background/80">
                     <span className="font-semibold text-foreground/85">🏆 Winner, IIT BHU Hackathon 2025</span>
