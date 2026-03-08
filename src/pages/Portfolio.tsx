@@ -544,7 +544,7 @@ const Portfolio = () => {
             </div>
 
             {/* Tools cloud — glass panel */}
-            <div className="relative overflow-hidden rounded-2xl border border-border/10 bg-card/25 p-6 backdrop-blur-xl">
+            <div className="relative overflow-hidden rounded-2xl border border-border/40 bg-card/65 p-6 shadow-md backdrop-blur-xl">
               <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-foreground/8 to-transparent" />
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-base">🛠️</span>
