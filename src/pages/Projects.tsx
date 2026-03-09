@@ -160,6 +160,18 @@ const projects = [
     gradient: "from-[hsl(150,50%,92%)] to-[hsl(160,40%,96%)]",
     accentColor: "hsl(150, 55%, 45%)",
   },
+  {
+    title: "JanamDivash",
+    subtitle: "Interactive Birthday Wisher",
+    description:
+      "A magical birthday celebration page where users pick candles, make a wish, and blow them out using their microphone — a delightful, interactive experience with playful animations.",
+    role: "Full-Stack Developer · Creative Tech",
+    tags: ["Interactive", "Microphone API", "Animations", "Fun UX", "Vercel"],
+    url: "https://janamdivash.vercel.app/",
+    emoji: "🎂",
+    gradient: "from-[hsl(330,55%,92%)] to-[hsl(340,45%,96%)]",
+    accentColor: "hsl(330, 60%, 55%)",
+  },
 ];
 
 const ProjectCard = ({ project, index }: { project: (typeof projects)[0]; index: number }) => {
