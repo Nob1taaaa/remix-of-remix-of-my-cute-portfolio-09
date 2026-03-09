@@ -111,6 +111,14 @@ const projects: Project[] = [
     tags: ["System Design", "Architecture", "Scalability", "Learning Platform", "Vercel"],
     url: "https://systemdesigning.vercel.app/",
   },
+  {
+    title: "CodingAI 💻",
+    description:
+      "An AI-powered coding assistant platform that helps developers write, debug, and optimize code with intelligent suggestions and real-time collaboration features.",
+    role: "Full-Stack Developer · AI Engineer",
+    tags: ["AI", "Code Generation", "Developer Tools", "Modern UI", "Vercel"],
+    url: "https://codingai-eta.vercel.app/",
+  },
 ];
 
 /* ── Journey timeline data ── */
