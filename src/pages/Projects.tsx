@@ -184,6 +184,18 @@ const projects = [
     gradient: "from-[hsl(200,55%,92%)] to-[hsl(210,45%,96%)]",
     accentColor: "hsl(200, 60%, 45%)",
   },
+  {
+    title: "VirtualCashMachine",
+    subtitle: "ATM Simulator",
+    description:
+      "A virtual ATM simulator that replicates real banking operations — withdraw, deposit, check balance, and manage accounts with an authentic cash machine experience.",
+    role: "Full-Stack Developer",
+    tags: ["Finance", "Simulation", "Banking", "Interactive", "Vercel"],
+    url: "https://virtualcashmachine.vercel.app/",
+    emoji: "🏧",
+    gradient: "from-[hsl(170,50%,92%)] to-[hsl(180,40%,96%)]",
+    accentColor: "hsl(170, 55%, 40%)",
+  },
 ];
 
 const ProjectCard = ({ project, index }: { project: (typeof projects)[0]; index: number }) => {
