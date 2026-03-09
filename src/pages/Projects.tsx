@@ -136,6 +136,18 @@ const projects = [
     gradient: "from-[hsl(280,50%,93%)] to-[hsl(290,40%,96%)]",
     accentColor: "hsl(280, 55%, 55%)",
   },
+  {
+    title: "System Designing",
+    subtitle: "Architecture Learning Hub",
+    description:
+      "An interactive system design learning platform covering scalable architectures, design patterns, and distributed systems concepts with visual diagrams and real-world case studies.",
+    role: "Full-Stack Developer · Educator",
+    tags: ["System Design", "Architecture", "Scalability", "Learning Platform", "Vercel"],
+    url: "https://systemdesigning.vercel.app/",
+    emoji: "🏗️",
+    gradient: "from-[hsl(200,50%,92%)] to-[hsl(210,40%,96%)]",
+    accentColor: "hsl(200, 55%, 50%)",
+  },
 ];
 
 const ProjectCard = ({ project, index }: { project: (typeof projects)[0]; index: number }) => {

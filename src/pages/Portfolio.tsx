@@ -103,6 +103,14 @@ const projects: Project[] = [
     tags: ["AI", "Diffusion Models", "Image Generation", "Modern UI", "Vercel"],
     url: "https://diffusionai.vercel.app/",
   },
+  {
+    title: "System Designing 🏗️",
+    description:
+      "An interactive system design learning platform covering scalable architectures, design patterns, and distributed systems concepts with visual diagrams and real-world case studies.",
+    role: "Full-Stack Developer · Educator",
+    tags: ["System Design", "Architecture", "Scalability", "Learning Platform", "Vercel"],
+    url: "https://systemdesigning.vercel.app/",
+  },
 ];
 
 /* ── Journey timeline data ── */
