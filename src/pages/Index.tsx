@@ -124,7 +124,7 @@ const Index = () => {
                 Currently
               </p>
               <p className="mt-1.5 text-base font-semibold sm:text-lg">Open to Work</p>
-              <p className="text-[11px] opacity-90 sm:text-xs">UI/UX Designer · Freelance</p>
+              <p className="text-[11px] opacity-90 sm:text-xs">AI/ML Engineer · Designer</p>
               <div className="mt-2 inline-flex items-center gap-2 rounded-full bg-background/10 px-3 py-1 text-[10px] sm:mt-2.5 sm:text-[11px]">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
                 Available Now
