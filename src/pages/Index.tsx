@@ -121,13 +121,13 @@ const Index = () => {
 
             <div className="rounded-3xl bg-gradient-to-br from-primary/90 to-primary/60 px-3 py-2.5 text-xs text-primary-foreground shadow-md shadow-primary/30 transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg sm:px-5 sm:py-4 sm:text-sm">
               <p className="text-[10px] font-medium uppercase tracking-[0.22em] opacity-80 sm:text-[11px]">
-                IDF Certified
+                Currently
               </p>
-              <p className="mt-1.5 text-base font-semibold sm:text-lg">Professional</p>
-              <p className="text-[11px] opacity-90 sm:text-xs">UI/UX Designer</p>
+              <p className="mt-1.5 text-base font-semibold sm:text-lg">Open to Work</p>
+              <p className="text-[11px] opacity-90 sm:text-xs">UI/UX Designer · Freelance</p>
               <div className="mt-2 inline-flex items-center gap-2 rounded-full bg-background/10 px-3 py-1 text-[10px] sm:mt-2.5 sm:text-[11px]">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                Verified 2024
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
+                Available Now
               </div>
             </div>
 
