@@ -9,24 +9,24 @@ const Index = () => {
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 px-3 py-3 sm:flex-nowrap sm:px-6 sm:py-4">
           <Link
             to="/"
-            className="text-lg font-semibold tracking-tight transition-colors hover:text-primary"
-          >
+            className="text-lg font-semibold tracking-tight transition-colors hover:text-primary">
+            
             Harshit Shah
           </Link>
 
           <nav className="flex items-center gap-3 text-xs text-muted-foreground sm:gap-8 sm:text-sm">
             <Link
               to="/projects"
-              className="story-link relative text-xs transition-colors hover:text-foreground sm:text-sm"
-            >
+              className="story-link relative text-xs transition-colors hover:text-foreground sm:text-sm">
+              
               Projects
             </Link>
           </nav>
 
           <a
             href="tel:+919140382662"
-            className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/90 px-3 py-1.5 text-[10px] font-medium text-foreground shadow-sm shadow-primary/10 transition-all hover:-translate-y-0.5 hover:bg-muted/80 sm:px-4 sm:py-2 sm:text-xs"
-          >
+            className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/90 px-3 py-1.5 text-[10px] font-medium text-foreground shadow-sm shadow-primary/10 transition-all hover:-translate-y-0.5 hover:bg-muted/80 sm:px-4 sm:py-2 sm:text-xs">
+            
             <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-[10px] font-semibold text-primary sm:h-6 sm:w-6">
               +
             </span>
@@ -68,15 +68,15 @@ const Index = () => {
             <a href="mailto:harshit840hs@gmail.com">
               <Button
                 size="lg"
-                className="rounded-full px-7 shadow-md shadow-primary/15 transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/25"
-              >
+                className="rounded-full px-7 shadow-md shadow-primary/15 transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/25">
+                
                 Get in touch
               </Button>
             </a>
             <Link
               to="/portfolio"
-              className="text-sm font-medium text-primary transition-colors hover:text-primary/80"
-            >
+              className="text-sm font-medium text-primary transition-colors hover:text-primary/80">
+              
               View Portfolio →
             </Link>
           </div>
@@ -97,8 +97,8 @@ const Index = () => {
               src={harshitPortrait}
               alt="Portrait of Harshit Shah, UI/UX Designer"
               className="relative h-full w-full object-cover"
-              loading="lazy"
-            />
+              loading="lazy" />
+            
           </div>
 
           <div className="grid w-full max-w-md gap-2.5 sm:gap-4 lg:max-w-none">
@@ -113,7 +113,7 @@ const Index = () => {
               </div>
               <div className="flex flex-col justify-end gap-1 text-right text-[10px] text-muted-foreground sm:text-[11px]">
                 <span className="inline-flex items-center justify-end gap-1 rounded-full bg-muted px-2 py-1 text-[9px] font-medium sm:text-[10px]">
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
                   Verified 2024
                 </span>
               </div>
@@ -136,21 +136,21 @@ const Index = () => {
                 Specialized in
               </p>
               <div className="mt-2 flex flex-wrap gap-1.5 text-[11px] sm:mt-2.5 sm:gap-2 sm:text-xs">
-                {["UI Design", "UX Research", "AI Engineer", "Designing"].map((chip) => (
-                  <span
-                    key={chip}
-                    className="rounded-full bg-muted px-2.5 py-1 text-muted-foreground transition-colors hover:bg-muted/80 sm:px-3"
-                  >
+                {["UI Design", "UX Research", "AI Engineer", "Designing"].map((chip) =>
+                <span
+                  key={chip}
+                  className="rounded-full bg-muted px-2.5 py-1 text-muted-foreground transition-colors hover:bg-muted/80 sm:px-3">
+                  
                     {chip}
                   </span>
-                ))}
+                )}
               </div>
             </div>
           </div>
         </section>
       </main>
-    </div>
-  );
+    </div>);
+
 };
 
 export default Index;
