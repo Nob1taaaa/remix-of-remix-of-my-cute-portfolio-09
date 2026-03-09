@@ -136,7 +136,7 @@ const Index = () => {
                 Specialized in
               </p>
               <div className="mt-2 flex flex-wrap gap-1.5 text-[11px] sm:mt-2.5 sm:gap-2 sm:text-xs">
-                {["UI Design", "UX Research", "Prototyping", "Designing"].map((chip) => (
+                {["UI Design", "UX Research", "AI Engineer", "Designing"].map((chip) => (
                   <span
                     key={chip}
                     className="rounded-full bg-muted px-2.5 py-1 text-muted-foreground transition-colors hover:bg-muted/80 sm:px-3"
