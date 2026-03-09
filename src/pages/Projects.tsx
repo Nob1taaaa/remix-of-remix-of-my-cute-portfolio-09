@@ -172,6 +172,18 @@ const projects = [
     gradient: "from-[hsl(330,55%,92%)] to-[hsl(340,45%,96%)]",
     accentColor: "hsl(330, 60%, 55%)",
   },
+  {
+    title: "AirGuardian",
+    subtitle: "Air Quality Monitoring Platform",
+    description:
+      "A real-time air quality monitoring dashboard that tracks pollution levels, provides health recommendations, and visualizes environmental data to help users stay informed and safe.",
+    role: "Full-Stack Developer · Environmental Tech",
+    tags: ["Air Quality", "Real-Time Data", "Dashboard", "Health", "Vercel"],
+    url: "https://air-guardian.vercel.app/",
+    emoji: "🌬️",
+    gradient: "from-[hsl(200,55%,92%)] to-[hsl(210,45%,96%)]",
+    accentColor: "hsl(200, 60%, 45%)",
+  },
 ];
 
 const ProjectCard = ({ project, index }: { project: (typeof projects)[0]; index: number }) => {
