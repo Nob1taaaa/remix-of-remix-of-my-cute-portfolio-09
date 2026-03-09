@@ -148,6 +148,18 @@ const projects = [
     gradient: "from-[hsl(200,50%,92%)] to-[hsl(210,40%,96%)]",
     accentColor: "hsl(200, 55%, 50%)",
   },
+  {
+    title: "CodingAI",
+    subtitle: "AI Coding Assistant",
+    description:
+      "An AI-powered coding assistant platform that helps developers write, debug, and optimize code with intelligent suggestions and real-time collaboration features.",
+    role: "Full-Stack Developer · AI Engineer",
+    tags: ["AI", "Code Generation", "Developer Tools", "Modern UI", "Vercel"],
+    url: "https://codingai-eta.vercel.app/",
+    emoji: "💻",
+    gradient: "from-[hsl(150,50%,92%)] to-[hsl(160,40%,96%)]",
+    accentColor: "hsl(150, 55%, 45%)",
+  },
 ];
 
 const ProjectCard = ({ project, index }: { project: (typeof projects)[0]; index: number }) => {
