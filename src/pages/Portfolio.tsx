@@ -673,15 +673,35 @@ const Portfolio = () => {
                 </p>
               </div>
               <div className="flex items-center gap-3">
-                <a href="/Harshit_Shah_resume_1.pdf" download>
+                <Dialog open={resumeDialogOpen} onOpenChange={setResumeDialogOpen}>
                   <Button
                     size="sm"
+                    onClick={() => setResumeDialogOpen(true)}
                     className="inline-flex items-center gap-2 rounded-full px-5 shadow-md shadow-primary/15 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/25"
                   >
                     <Download className="h-4 w-4" />
                     <span>Download resume (PDF)</span>
                   </Button>
-                </a>
+                  <DialogContent className="sm:max-w-md">
+                    <DialogHeader>
+                      <DialogTitle>Download Resume</DialogTitle>
+                      <DialogDescription>
+                        You're about to download Harshit Shah's resume as a PDF file.
+                      </DialogDescription>
+                    </DialogHeader>
+                    <DialogFooter className="flex flex-col gap-2 sm:flex-row">
+                      <Button variant="outline" onClick={() => setResumeDialogOpen(false)}>
+                        Cancel
+                      </Button>
+                      <a href="/Harshit_Shah_resume_1.pdf" download onClick={() => setResumeDialogOpen(false)}>
+                        <Button className="w-full gap-2">
+                          <Download className="h-4 w-4" />
+                          Download PDF
+                        </Button>
+                      </a>
+                    </DialogFooter>
+                  </DialogContent>
+                </Dialog>
               </div>
             </div>
           </section>
