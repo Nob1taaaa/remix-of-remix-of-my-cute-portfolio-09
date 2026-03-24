@@ -265,6 +265,7 @@ const TimelineMilestone = ({ event, index }: { event: typeof timelineEvents[0]; 
 
 const Portfolio = () => {
   const [showMobileSkills, setShowMobileSkills] = useState(false);
+  const [resumeDialogOpen, setResumeDialogOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-accent/5 text-foreground">
