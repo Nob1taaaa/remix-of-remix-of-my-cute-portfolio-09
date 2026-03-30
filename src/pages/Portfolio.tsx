@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
+import { useToast } from "@/hooks/use-toast";
 import { Download, Sparkles } from "lucide-react";
 import jsiarCertificate from "@/assets/jsiar-certificate.png";
 
@@ -266,6 +267,26 @@ const TimelineMilestone = ({ event, index }: { event: typeof timelineEvents[0]; 
 const Portfolio = () => {
   const [showMobileSkills, setShowMobileSkills] = useState(false);
   const [resumeDialogOpen, setResumeDialogOpen] = useState(false);
+  const { toast } = useToast();
+
+  const openResumeDialog = useCallback(() => {
+    setResumeDialogOpen(true);
+  }, []);
+
+  const handleResumeDownload = useCallback(() => {
+    const link = document.createElement("a");
+    link.href = "/Harshit_Shah_resume_1.pdf";
+    link.download = "Harshit_Shah_Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    setResumeDialogOpen(false);
+    toast({
+      title: "Resume download started",
+      description: "Your PDF should appear in your downloads in a moment.",
+    });
+  }, [toast]);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background via-background to-accent/5 text-foreground">
@@ -383,6 +404,24 @@ const Portfolio = () => {
               <a href="https://github.com/Nob1taaaa" target="_blank" rel="noreferrer" className="hover:text-foreground transition-colors">
                 💻 github.com/Nob1taaaa
               </a>
+            </div>
+
+            <div className="grid gap-4 rounded-2xl border border-border/30 bg-card/75 p-4 shadow-sm backdrop-blur-sm sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:p-5">
+              <div className="space-y-1.5">
+                <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-primary/70">Quick resume access</p>
+                <h2 className="text-base font-bold tracking-tight text-foreground sm:text-lg">Looking for my resume?</h2>
+                <p className="max-w-xl text-xs leading-relaxed text-muted-foreground/65 sm:text-sm">
+                  Open the download popup and get the latest PDF instantly with clear confirmation once the file starts downloading.
+                </p>
+              </div>
+              <Button
+                size="sm"
+                onClick={openResumeDialog}
+                className="w-full rounded-full px-5 shadow-md shadow-primary/15 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/25 sm:w-auto"
+              >
+                <Download className="h-4 w-4" />
+                Open resume download
+              </Button>
             </div>
           </section>
         </FadeInSection>
@@ -672,12 +711,15 @@ const Portfolio = () => {
                   Get the full, high-resolution PDF resume with clickable links to projects, education, experience, and
                   publications.
                 </p>
+                <p className="text-[11px] font-medium text-primary/70 sm:text-xs">
+                  A confirmation popup appears first, then a download message shows after it starts.
+                </p>
               </div>
               <div className="flex items-center gap-3">
                 <Dialog open={resumeDialogOpen} onOpenChange={setResumeDialogOpen}>
                   <Button
                     size="sm"
-                    onClick={() => setResumeDialogOpen(true)}
+                    onClick={openResumeDialog}
                     className="inline-flex items-center gap-2 rounded-full px-5 shadow-md shadow-primary/15 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/25"
                   >
                     <Download className="h-4 w-4" />
@@ -685,21 +727,22 @@ const Portfolio = () => {
                   </Button>
                   <DialogContent className="sm:max-w-md">
                     <DialogHeader>
-                      <DialogTitle>Download Resume</DialogTitle>
+                      <DialogTitle>Your resume is ready</DialogTitle>
                       <DialogDescription>
-                        You're about to download Harshit Shah's resume as a PDF file.
+                        Download the latest PDF resume. As soon as the file starts, you&apos;ll see a confirmation message so visitors know it worked.
                       </DialogDescription>
                     </DialogHeader>
+                    <div className="rounded-xl border border-border/30 bg-accent/20 p-3 text-xs leading-relaxed text-muted-foreground/70">
+                      Includes projects, education, experience, achievements, and publication links.
+                    </div>
                     <DialogFooter className="flex flex-col gap-2 sm:flex-row">
                       <Button variant="outline" onClick={() => setResumeDialogOpen(false)}>
                         Cancel
                       </Button>
-                      <a href="/Harshit_Shah_resume_1.pdf" download onClick={() => setResumeDialogOpen(false)}>
-                        <Button className="w-full gap-2">
-                          <Download className="h-4 w-4" />
-                          Download PDF
-                        </Button>
-                      </a>
+                      <Button className="w-full gap-2" onClick={handleResumeDownload}>
+                        <Download className="h-4 w-4" />
+                        Yes, download now
+                      </Button>
                     </DialogFooter>
                   </DialogContent>
                 </Dialog>
