@@ -5,16 +5,28 @@ import { useEffect, useRef, useState } from "react";
 
 const projects = [
   {
-    title: "Trutalenza",
-    subtitle: "AI Chatbot Platform",
+    title: "NIU Campus",
+    subtitle: "Student-Powered Campus Platform",
     description:
-      "Production-ready AI chatbot platform where users can create and manage assistants, with React UI, API layer, and Firebase backend.",
-    role: "Full-Stack Developer · AI Engineer",
-    tags: ["React", "Firebase", "Hugging Face", "n8n", "Vercel", "REST APIs"],
-    url: "https://trutalenza.com/",
-    emoji: "🤖",
-    gradient: "from-[hsl(210,60%,92%)] to-[hsl(220,50%,96%)]",
-    accentColor: "hsl(210, 60%, 55%)",
+      "From idea to 500+ users at Noida International University 🎉 — a student-powered hub for shared study materials, events & fests, lost & found, community connect, and buying/selling books & accessories.",
+    role: "Founder · Full-Stack Developer",
+    tags: ["Study Materials", "Events", "Lost & Found", "Marketplace", "Community", "500+ Users"],
+    url: "https://niucampus.org",
+    emoji: "🎓",
+    gradient: "from-[hsl(265,55%,93%)] to-[hsl(280,45%,96%)]",
+    accentColor: "hsl(265, 60%, 55%)",
+  },
+  {
+    title: "GhatBanaras",
+    subtitle: "Hidden Banaras Explorer",
+    description:
+      "AI-assisted travel platform for Varanasi — surfaces hidden ghats, local stories, and non-obvious experiences with OpenAI-powered trip planning.",
+    role: "Product Designer · Full-Stack Developer",
+    tags: ["OpenAI", "Travel", "Auth", "Local Insights", "Modern UI"],
+    url: "https://ghatbanaras.com/",
+    emoji: "🔱",
+    gradient: "from-[hsl(40,60%,92%)] to-[hsl(45,45%,96%)]",
+    accentColor: "hsl(40, 65%, 48%)",
   },
   {
     title: "ChatPup",
@@ -77,18 +89,6 @@ const projects = [
     accentColor: "hsl(175, 55%, 40%)",
   },
   {
-    title: "GhatBanaras",
-    subtitle: "Hidden Banaras Explorer",
-    description:
-      "AI-assisted travel platform for Varanasi — surfaces hidden ghats, local stories, and non-obvious experiences with OpenAI-powered trip planning.",
-    role: "Product Designer · Full-Stack Developer",
-    tags: ["OpenAI", "Travel", "Auth", "Local Insights", "Modern UI"],
-    url: "https://ghatbanaras.com/",
-    emoji: "🔱",
-    gradient: "from-[hsl(40,60%,92%)] to-[hsl(45,45%,96%)]",
-    accentColor: "hsl(40, 65%, 48%)",
-  },
-  {
     title: "AI/ML Model Lab",
     subtitle: "NLP & Agents Playground",
     description:
@@ -111,18 +111,6 @@ const projects = [
     emoji: "💸",
     gradient: "from-[hsl(160,50%,92%)] to-[hsl(170,40%,96%)]",
     accentColor: "hsl(160, 55%, 42%)",
-  },
-  {
-    title: "NIU Campus",
-    subtitle: "Student-Powered Campus Platform",
-    description:
-      "From idea to 500+ users at Noida International University 🎉 — a student-powered hub for shared study materials, events & fests, lost & found, community connect, and buying/selling books & accessories.",
-    role: "Founder · Full-Stack Developer",
-    tags: ["Study Materials", "Events", "Lost & Found", "Marketplace", "Community", "500+ Users"],
-    url: "https://niucampus.org",
-    emoji: "🎓",
-    gradient: "from-[hsl(265,55%,93%)] to-[hsl(280,45%,96%)]",
-    accentColor: "hsl(265, 60%, 55%)",
   },
   {
     title: "DiffusionAI",
@@ -195,6 +183,18 @@ const projects = [
     emoji: "🏧",
     gradient: "from-[hsl(170,50%,92%)] to-[hsl(180,40%,96%)]",
     accentColor: "hsl(170, 55%, 40%)",
+  },
+  {
+    title: "Trutalenza",
+    subtitle: "AI Chatbot Platform",
+    description:
+      "Production-ready AI chatbot platform where users can create and manage assistants, with React UI, API layer, and Firebase backend.",
+    role: "Full-Stack Developer · AI Engineer",
+    tags: ["React", "Firebase", "Hugging Face", "n8n", "Vercel", "REST APIs"],
+    url: "https://trutalenza.com/",
+    emoji: "🤖",
+    gradient: "from-[hsl(210,60%,92%)] to-[hsl(220,50%,96%)]",
+    accentColor: "hsl(210, 60%, 55%)",
   },
 ];
 
