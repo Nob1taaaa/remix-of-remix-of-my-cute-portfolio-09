@@ -13,10 +13,17 @@ const Index = () => {
             Harshit Shah
           </Link>
 
-          <nav className="flex items-center gap-4 text-xs text-muted-foreground sm:gap-8 sm:text-sm">
+          <nav className="flex items-center gap-1.5 text-xs sm:gap-2 sm:text-sm">
+            <Link
+              to="/portfolio"
+              className="group inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-3 py-1.5 font-medium text-primary shadow-sm shadow-primary/10 transition-all hover:-translate-y-0.5 hover:bg-primary/10 hover:shadow-md hover:shadow-primary/20 sm:px-4 sm:py-2">
+              <span className="text-[11px] transition-transform group-hover:scale-110 sm:text-xs">💼</span>
+              Portfolio
+            </Link>
             <Link
               to="/projects"
-              className="story-link relative transition-colors hover:text-foreground">
+              className="group inline-flex items-center gap-1.5 rounded-full border border-accent-foreground/20 bg-accent/40 px-3 py-1.5 font-medium text-foreground shadow-sm shadow-primary/10 transition-all hover:-translate-y-0.5 hover:bg-accent/70 hover:shadow-md sm:px-4 sm:py-2">
+              <span className="text-[11px] transition-transform group-hover:rotate-12 sm:text-xs">✨</span>
               Projects
             </Link>
           </nav>
