@@ -132,7 +132,7 @@ const timelineEvents = [
   { year: "2025", emoji: "📄", title: "Published in JSIAR", description: "Co-authored a peer-reviewed paper on Adaptive Hybrid Intelligence for Cross-Border Fraud Detection.", side: "left" as const },
   { year: "2025", emoji: "🚀", title: "Coding Club Lead", description: "Leading hackathons, mentoring 50+ students in web dev, AI tooling, and modern deployment workflows.", side: "right" as const },
   { year: "2026", emoji: "🎓", title: "Launched NIU Campus", description: "Built a campus platform that 500+ real students use for events, study materials, lost & found and a marketplace.", side: "left" as const },
-  { year: "2026", emoji: "🎪", title: "Events & Tech Fest, IIT BHU", description: "Took part in the Events & Tech Fest at IIT BHU, Varanasi.", side: "right" as const },
+  { year: "2026", emoji: "🎪", title: "Events & Tech Fest, IIT Kanpur & IIT BHU", description: "Took part in Events & Tech Fests at IIT Kanpur and IIT BHU, Varanasi.", side: "right" as const },
 ];
 
 /* ── Scroll-reveal wrapper ── */
