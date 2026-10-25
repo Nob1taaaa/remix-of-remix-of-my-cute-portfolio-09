@@ -35,6 +35,54 @@ const projects = [
     accentColor: "hsl(265, 60%, 55%)",
   },
   {
+    title: "AI/ML Model Lab",
+    subtitle: "NLP & Agents Playground",
+    description:
+      "Hands-on AI lab exploring NLP, fine-tuning with LoRA, and multi-agent orchestration. Features an AI Resume Scanner, text classification, and streaming assistants — all in a playful learning interface.",
+    role: "Full-Stack Developer · AI/ML Engineer",
+    tags: ["NLP", "Fine-tuning", "LoRA", "AI Agents", "Lovable Cloud", "Edge Functions"],
+    url: "https://aimlmodel.vercel.app/",
+    emoji: "🧠",
+    gradient: "from-[hsl(20,60%,92%)] to-[hsl(25,45%,96%)]",
+    accentColor: "hsl(20, 65%, 50%)",
+  },
+  {
+    title: "BeBrave",
+    subtitle: "BoostHabits Wellness",
+    description:
+      "A mood-aware wellness app that delivers personalized boosts, habit tracking, and daily motivation with a soothing, cozy UI.",
+    role: "Full-Stack Developer · Wellness Tech",
+    tags: ["Mood Tracking", "Habits", "Auth", "Streaks", "Wellness UX"],
+    url: "https://bebrave.vercel.app/",
+    emoji: "💪",
+    gradient: "from-[hsl(270,45%,93%)] to-[hsl(280,35%,96%)]",
+    accentColor: "hsl(270, 50%, 55%)",
+  },
+  {
+    title: "TenderGift",
+    subtitle: "Soft Gift Finder",
+    description:
+      "AI-powered gift recommendation app — takes a heartfelt prompt and suggests the perfect personalized gift with a dreamy UI.",
+    role: "Full-Stack Developer · AI Integration",
+    tags: ["AI Matching", "Gallery", "Prompt UX", "Affiliate", "Vercel"],
+    url: "https://tendergift.vercel.app/",
+    emoji: "🎁",
+    gradient: "from-[hsl(340,50%,93%)] to-[hsl(350,40%,96%)]",
+    accentColor: "hsl(340, 55%, 55%)",
+  },
+  {
+    title: "Split",
+    subtitle: "Expense Splitter",
+    description:
+      "A clean expense-splitting app that lets you create or join groups with invite codes, track shared expenses, and settle balances effortlessly.",
+    role: "Full-Stack Developer",
+    tags: ["Expense Tracking", "Groups", "Invite Codes", "Clean UX", "Vercel"],
+    url: "https://split-two-wheat.vercel.app",
+    emoji: "💸",
+    gradient: "from-[hsl(160,50%,92%)] to-[hsl(170,40%,96%)]",
+    accentColor: "hsl(160, 55%, 42%)",
+  },
+  {
     title: "GhatBanaras",
     subtitle: "Hidden Banaras Explorer",
     description:
@@ -71,30 +119,6 @@ const projects = [
     accentColor: "hsl(145, 45%, 45%)",
   },
   {
-    title: "TenderGift",
-    subtitle: "Soft Gift Finder",
-    description:
-      "AI-powered gift recommendation app — takes a heartfelt prompt and suggests the perfect personalized gift with a dreamy UI.",
-    role: "Full-Stack Developer · AI Integration",
-    tags: ["AI Matching", "Gallery", "Prompt UX", "Affiliate", "Vercel"],
-    url: "https://tendergift.vercel.app/",
-    emoji: "🎁",
-    gradient: "from-[hsl(340,50%,93%)] to-[hsl(350,40%,96%)]",
-    accentColor: "hsl(340, 55%, 55%)",
-  },
-  {
-    title: "BeBrave",
-    subtitle: "BoostHabits Wellness",
-    description:
-      "A mood-aware wellness app that delivers personalized boosts, habit tracking, and daily motivation with a soothing, cozy UI.",
-    role: "Full-Stack Developer · Wellness Tech",
-    tags: ["Mood Tracking", "Habits", "Auth", "Streaks", "Wellness UX"],
-    url: "https://bebrave.vercel.app/",
-    emoji: "💪",
-    gradient: "from-[hsl(270,45%,93%)] to-[hsl(280,35%,96%)]",
-    accentColor: "hsl(270, 50%, 55%)",
-  },
-  {
     title: "RAGMode",
     subtitle: "Realtime AI Workspace",
     description:
@@ -105,30 +129,6 @@ const projects = [
     emoji: "⚡",
     gradient: "from-[hsl(175,50%,90%)] to-[hsl(185,40%,95%)]",
     accentColor: "hsl(175, 55%, 40%)",
-  },
-  {
-    title: "AI/ML Model Lab",
-    subtitle: "NLP & Agents Playground",
-    description:
-      "Hands-on AI lab exploring NLP, fine-tuning with LoRA, and multi-agent orchestration. Features an AI Resume Scanner, text classification, and streaming assistants — all in a playful learning interface.",
-    role: "Full-Stack Developer · AI/ML Engineer",
-    tags: ["NLP", "Fine-tuning", "LoRA", "AI Agents", "Lovable Cloud", "Edge Functions"],
-    url: "https://aimlmodel.vercel.app/",
-    emoji: "🧠",
-    gradient: "from-[hsl(20,60%,92%)] to-[hsl(25,45%,96%)]",
-    accentColor: "hsl(20, 65%, 50%)",
-  },
-  {
-    title: "Split",
-    subtitle: "Expense Splitter",
-    description:
-      "A clean expense-splitting app that lets you create or join groups with invite codes, track shared expenses, and settle balances effortlessly.",
-    role: "Full-Stack Developer",
-    tags: ["Expense Tracking", "Groups", "Invite Codes", "Clean UX", "Vercel"],
-    url: "https://split-two-wheat.vercel.app",
-    emoji: "💸",
-    gradient: "from-[hsl(160,50%,92%)] to-[hsl(170,40%,96%)]",
-    accentColor: "hsl(160, 55%, 42%)",
   },
   {
     title: "DiffusionAI",
