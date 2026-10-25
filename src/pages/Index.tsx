@@ -103,15 +103,22 @@ const Index = () => {
           </div>
 
           <div className="grid w-full max-w-md gap-3 sm:gap-4 lg:max-w-none">
-            <div className="flex justify-between rounded-3xl border border-border/70 bg-background/95 px-4 py-3 shadow-sm shadow-primary/10 backdrop-blur-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-md sm:px-5 sm:py-4">
-              <div>
-                <p className="text-2xl font-semibold tracking-tight sm:text-3xl">500+</p>
-                <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground sm:text-[11px]">
-                  Students use
-                  <br />
-                  NIU Campus
-                </p>
+            <div className="group flex items-center justify-between gap-4 rounded-3xl border border-border/70 bg-background/95 px-5 py-4 shadow-sm shadow-primary/10 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+              <div className="flex items-center gap-4">
+                <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 text-lg transition-transform duration-300 group-hover:rotate-6">
+                  🎓
+                </span>
+                <div>
+                  <p className="text-2xl font-semibold leading-none tracking-tight sm:text-3xl">500+</p>
+                  <p className="mt-1.5 text-[11px] font-medium text-muted-foreground sm:text-xs">
+                    Students use NIU Campus
+                  </p>
+                </div>
               </div>
+              <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-muted px-2.5 py-1 text-[10px] font-medium sm:text-[11px]">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
+                Live
+              </span>
             </div>
 
             <div className="rounded-3xl bg-gradient-to-br from-primary/90 to-primary/60 px-4 py-3 text-xs text-primary-foreground shadow-md shadow-primary/30 transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg sm:px-5 sm:py-4 sm:text-sm">
