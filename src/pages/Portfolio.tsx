@@ -130,8 +130,9 @@ const timelineEvents = [
   { year: "2025", emoji: "🏆", title: "Won IIT BHU Hackathon", description: "Led a team to build an AI-powered product using Hugging Face models, winning against strong competition.", side: "left" as const },
   { year: "2025", emoji: "🏢", title: "IBM Student Ambassador", description: "Selected as IBM Ambassador — conducting workshops on full-stack development, AI tools, and cloud deployment.", side: "right" as const },
   { year: "2025", emoji: "📄", title: "Published in JSIAR", description: "Co-authored a peer-reviewed paper on Adaptive Hybrid Intelligence for Cross-Border Fraud Detection.", side: "left" as const },
-  { year: "2025", emoji: "🚀", title: "Coding Club Lead", description: "Leading hackathons, mentoring 50+ students in web dev, AI tooling, and modern deployment workflows.", side: "right" as const },
-  { year: "2026", emoji: "🎪", title: "Events & Tech Fest, IIT BHU", description: "Took part in the Events & Tech Fest at IIT BHU, Varanasi.", side: "left" as const },
+  { year: "2025", emoji: "🎓", title: "Launched NIU Campus", description: "Built a campus platform used by 500+ students for events, study materials, lost & found and a marketplace.", side: "right" as const },
+  { year: "2025", emoji: "🚀", title: "Coding Club Lead", description: "Leading hackathons, mentoring 50+ students in web dev, AI tooling, and modern deployment workflows.", side: "left" as const },
+  { year: "2026", emoji: "🎪", title: "Events & Tech Fest, IIT BHU", description: "Took part in the Events & Tech Fest at IIT BHU, Varanasi.", side: "right" as const },
 ];
 
 /* ── Scroll-reveal wrapper ── */
