@@ -71,6 +71,18 @@ const projects = [
     accentColor: "hsl(340, 55%, 55%)",
   },
   {
+    title: "ChatPup",
+    subtitle: "Puppy Sale Platform",
+    description:
+      "AI text generation platform with Supabase database, authentication, and analytics. Clean UX with integrated payments for premium features.",
+    role: "Full-Stack Developer · AI Integration",
+    tags: ["Vue.js", "Supabase", "OpenAI", "Auth", "Payments", "Vercel"],
+    url: "https://petscares.vercel.app/",
+    emoji: "🐶",
+    gradient: "from-[hsl(30,70%,93%)] to-[hsl(35,50%,96%)]",
+    accentColor: "hsl(30, 70%, 50%)",
+  },
+  {
     title: "Split",
     subtitle: "Expense Splitter",
     description:
@@ -93,18 +105,6 @@ const projects = [
     emoji: "🔱",
     gradient: "from-[hsl(40,60%,92%)] to-[hsl(45,45%,96%)]",
     accentColor: "hsl(40, 65%, 48%)",
-  },
-  {
-    title: "ChatPup",
-    subtitle: "Puppy Sale Platform",
-    description:
-      "AI text generation platform with Supabase database, authentication, and analytics. Clean UX with integrated payments for premium features.",
-    role: "Full-Stack Developer · AI Integration",
-    tags: ["Vue.js", "Supabase", "OpenAI", "Auth", "Payments", "Vercel"],
-    url: "https://petscares.vercel.app/",
-    emoji: "🐶",
-    gradient: "from-[hsl(30,70%,93%)] to-[hsl(35,50%,96%)]",
-    accentColor: "hsl(30, 70%, 50%)",
   },
   {
     title: "GPSVNS",
