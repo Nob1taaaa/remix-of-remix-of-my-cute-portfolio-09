@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import harshitPortrait from "@/assets/harshit-portrait.jpg";
@@ -103,7 +104,13 @@ const Index = () => {
           </div>
 
           <div className="grid w-full max-w-md gap-3 sm:gap-4 lg:max-w-none">
-            <div className="group flex items-center justify-between gap-4 rounded-3xl border border-border/70 bg-background/95 px-5 py-4 shadow-sm shadow-primary/10 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+            <a
+              href="https://niucampus.org"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Visit NIU Campus, used by 500+ students"
+              className="group flex items-center justify-between gap-4 rounded-3xl border border-border/70 bg-background/95 px-5 py-4 shadow-sm shadow-primary/10 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            >
               <div className="flex items-center gap-4">
                 <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 text-lg transition-transform duration-300 group-hover:rotate-6">
                   🎓
@@ -115,11 +122,12 @@ const Index = () => {
                   </p>
                 </div>
               </div>
-              <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-muted px-2.5 py-1 text-[10px] font-medium sm:text-[11px]">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-500" />
-                Live
+              <span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-foreground px-3 py-1.5 text-[11px] font-medium text-background transition-transform duration-300 group-hover:translate-x-0.5">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
+                Visit site
+                <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </span>
-            </div>
+            </a>
 
             <div className="rounded-3xl bg-gradient-to-br from-primary/90 to-primary/60 px-4 py-3 text-xs text-primary-foreground shadow-md shadow-primary/30 transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg sm:px-5 sm:py-4 sm:text-sm">
               <p className="text-[10px] font-medium uppercase tracking-[0.22em] opacity-80 sm:text-[11px]">
