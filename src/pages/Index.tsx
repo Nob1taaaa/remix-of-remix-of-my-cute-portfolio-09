@@ -66,7 +66,7 @@ const Index = () => {
           </div>
 
           <p className="max-w-md text-sm leading-relaxed text-muted-foreground sm:text-base">
-            I design beautifully simple, soft interfaces—and I love what I do.
+            Clean design, smart AI, and products that people actually love.
           </p>
 
           <div className="flex flex-wrap items-center gap-4 pt-1 text-sm">
