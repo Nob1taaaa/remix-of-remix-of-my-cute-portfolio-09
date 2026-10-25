@@ -1,7 +1,25 @@
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, Sparkles, ExternalLink } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+
+// Screenshots live in public/projects. Projects without one get an emoji panel.
+const screenshots: Record<string, string> = {
+  "NIU Campus": "/projects/niu-campus.jpg",
+  "ChatPup": "/projects/chatpup.jpg",
+  "GPSVNS": "/projects/gpsvns.jpg",
+  "TenderGift": "/projects/tendergift.jpg",
+  "BeBrave": "/projects/bebrave.jpg",
+  "RAGMode": "/projects/ragmode.jpg",
+  "AI/ML Model Lab": "/projects/ai-ml-model-lab.jpg",
+  "Split": "/projects/split.jpg",
+  "DiffusionAI": "/projects/diffusionai.jpg",
+  "System Designing": "/projects/system-designing.jpg",
+  "CodingAI": "/projects/codingai.jpg",
+  "JanamDivash": "/projects/janamdivash.jpg",
+  "AirGuardian": "/projects/airguardian.jpg",
+  "VirtualCashMachine": "/projects/virtualcashmachine.jpg",
+};
 
 const projects = [
   {
@@ -198,16 +216,31 @@ const projects = [
   },
 ];
 
+// Short looping previews that play on hover. Projects without one keep the screenshot.
+const videos: Record<string, string> = {
+  "NIU Campus": "/projects/niu-campus-demo.webm",
+};
+
 const ProjectCard = ({ project, index }: { project: (typeof projects)[0]; index: number }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
   const ref = useRef<HTMLAnchorElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const image = screenshots[project.title];
+  const video = videos[project.title];
+
+  const handleEnter = () => {
+    videoRef.current?.play().catch(() => {});
+  };
+  const handleLeave = () => {
+    videoRef.current?.pause();
+    if (videoRef.current) videoRef.current.currentTime = 0;
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setTimeout(() => setIsVisible(true), index * 100);
+          setTimeout(() => setIsVisible(true), index * 80);
           observer.disconnect();
         }
       },
@@ -223,196 +256,113 @@ const ProjectCard = ({ project, index }: { project: (typeof projects)[0]; index:
       href={project.url}
       target="_blank"
       rel="noreferrer"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className={`group relative flex flex-col overflow-hidden rounded-[20px] border border-border/30 bg-card transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]
-        hover:shadow-[0_20px_60px_-15px_hsl(var(--primary)/0.18),0_0_0_1px_hsl(var(--primary)/0.08)] hover:-translate-y-3 hover:scale-[1.02]
-        ${isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-12 scale-[0.97]"}
-      `}
+      onMouseEnter={handleEnter}
+      onMouseLeave={handleLeave}
+      className={`group flex flex-col overflow-hidden rounded-2xl border border-white/70 bg-white/65 shadow-[0_8px_30px_-12px_rgba(15,23,42,0.18)] backdrop-blur-xl transition-all duration-700 ease-out hover:-translate-y-1.5 hover:shadow-[0_24px_50px_-18px_rgba(15,23,42,0.28)] ${
+        isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+      }`}
     >
-      {/* Colorful top gradient band */}
-      <div
-        className={`h-1.5 w-full bg-gradient-to-r ${project.gradient} transition-all duration-500`}
-        style={{
-          height: isHovered ? "4px" : "3px",
-          background: isHovered
-            ? `linear-gradient(90deg, ${project.accentColor}, transparent)`
-            : undefined,
-        }}
-      />
-
-      {/* Inner padding area */}
-      <div className="flex flex-1 flex-col p-5 sm:p-6">
-        {/* Header: emoji bubble + title + number */}
-        <div className="flex items-start gap-3.5">
-          {/* Emoji in a soft bubble */}
-          <div
-            className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${project.gradient} text-xl shadow-sm transition-all duration-500 group-hover:scale-110 group-hover:shadow-md group-hover:rotate-3`}
-          >
+      <div className="relative aspect-[16/10] overflow-hidden border-b border-white/70 bg-muted">
+        {image ? (
+          <img
+            src={image}
+            alt={`${project.title} screenshot`}
+            loading="lazy"
+            className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+          />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary/10 to-accent text-5xl">
             {project.emoji}
           </div>
+        )}
+        {video && (
+          <video
+            ref={videoRef}
+            src={video}
+            muted
+            loop
+            playsInline
+            preload="none"
+            className="absolute inset-0 h-full w-full object-cover object-top opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+          />
+        )}
+      </div>
 
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center justify-between gap-2">
-              <h3 className="text-[15px] font-bold tracking-tight text-foreground sm:text-base truncate">
-                {project.title}
-              </h3>
-              <span className="shrink-0 font-mono text-[10px] font-semibold text-muted-foreground/30 transition-colors duration-300 group-hover:text-primary/50">
-                #{String(index + 1).padStart(2, "0")}
-              </span>
-            </div>
-            <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground/50 sm:text-xs">
-              {project.subtitle}
-            </p>
+      <div className="flex flex-1 flex-col gap-3 p-5">
+        <div className="flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <h3 className="truncate text-base font-semibold text-foreground">{project.title}</h3>
+            <p className="text-sm text-foreground/70">{project.subtitle}</p>
           </div>
+          <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-foreground transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
         </div>
 
-        {/* Description */}
-        <p className="mt-4 text-[12.5px] leading-[1.7] text-muted-foreground/65 sm:text-[13px]">
-          {project.description}
-        </p>
+        <p className="text-sm leading-relaxed text-foreground/85">{project.description}</p>
+        <p className="text-xs font-medium text-foreground/70">{project.role}</p>
 
-        {/* Role pill */}
-        <div className="mt-4 flex items-center gap-2">
-          <span
-            className="inline-flex items-center gap-1.5 rounded-full px-3 py-[5px] text-[10px] font-bold uppercase tracking-[0.12em] transition-all duration-300 group-hover:shadow-sm sm:text-[10.5px]"
-            style={{
-              background: `${project.accentColor}15`,
-              color: project.accentColor,
-            }}
-          >
-            <Sparkles className="h-2.5 w-2.5" />
-            {project.role}
-          </span>
-        </div>
-
-        {/* Tags */}
-        <div className="mt-auto pt-5 flex flex-wrap gap-1.5">
-          {project.tags.map((tag, tagIdx) => (
+        <div className="mt-auto flex flex-wrap gap-1.5 pt-2">
+          {project.tags.slice(0, 4).map((tag) => (
             <span
               key={tag}
-              className="rounded-lg border border-border/20 bg-background/50 px-2 py-[3px] text-[9.5px] font-semibold tracking-wide text-muted-foreground/50 transition-all duration-300 group-hover:border-border/40 group-hover:text-muted-foreground/70 sm:text-[10px]"
-              style={{
-                transitionDelay: isHovered ? `${tagIdx * 30}ms` : "0ms",
-              }}
+              className="rounded-full border border-white/80 bg-white/75 px-2.5 py-0.5 text-xs font-medium text-foreground/80"
             >
               {tag}
             </span>
           ))}
         </div>
-
-        {/* Visit CTA — appears on hover */}
-        <div className="mt-4 flex items-center gap-1.5 text-[11px] font-semibold tracking-wide opacity-0 transition-all duration-400 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0"
-          style={{ color: project.accentColor }}
-        >
-          Visit project
-          <ArrowUpRight className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-        </div>
       </div>
-
-      {/* Floating glow blob behind card on hover */}
-      <div
-        className="pointer-events-none absolute -bottom-10 -right-10 h-32 w-32 rounded-full opacity-0 blur-3xl transition-opacity duration-700 group-hover:opacity-30"
-        style={{ background: project.accentColor }}
-      />
-      <div
-        className="pointer-events-none absolute -top-8 -left-8 h-24 w-24 rounded-full opacity-0 blur-3xl transition-opacity duration-700 group-hover:opacity-20"
-        style={{ background: project.accentColor }}
-      />
     </a>
   );
 };
 
-const Projects = () => {
-  const [headerVisible, setHeaderVisible] = useState(false);
-  
-  useEffect(() => {
-    setTimeout(() => setHeaderVisible(true), 100);
-  }, []);
+const Projects = () => (
+  <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-primary/5 via-background to-accent/10 text-foreground">
+    <div aria-hidden className="pointer-events-none absolute -left-40 -top-40 h-[28rem] w-[28rem] rounded-full bg-primary/15 blur-3xl" />
+    <div aria-hidden className="pointer-events-none absolute right-[-10rem] top-1/3 h-[32rem] w-[32rem] rounded-full bg-accent/60 blur-3xl" />
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-accent/10 text-foreground">
-      <header className="sticky top-0 z-20 border-b border-border/60 bg-background/95 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-3 py-3 sm:px-6 sm:py-4">
-          <h1 className="text-base font-semibold tracking-tight sm:text-lg">Projects</h1>
-          <Link to="/" className="text-xs text-muted-foreground hover:text-primary sm:text-sm transition-colors">
-            ← Back to home
-          </Link>
+    <header className="sticky top-0 z-20 border-b border-white/60 bg-white/50 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
+        <h1 className="text-base font-semibold tracking-tight sm:text-lg">Projects</h1>
+        <Link to="/" className="text-sm text-foreground/70 transition-colors hover:text-foreground">
+          ← Back to home
+        </Link>
+      </div>
+    </header>
+
+    <main className="relative mx-auto flex max-w-6xl flex-col gap-12 px-4 pb-16 pt-12 sm:px-6 sm:pt-16">
+      <section className="max-w-2xl space-y-4">
+        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-foreground/70">Selected work</p>
+        <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
+          Real products I&apos;ve designed &amp; shipped
+        </h2>
+        <p className="text-base leading-relaxed text-foreground/80">
+          AI chatbots, travel experiences and modern web apps, each built with clean UI, thoughtful UX and reliable
+          engineering.
+        </p>
+        <span className="inline-flex items-center rounded-full border border-white/70 bg-white/70 px-3 py-1 text-xs font-semibold text-foreground shadow-sm backdrop-blur">
+          {projects.length} projects
+        </span>
+      </section>
+
+      <section className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {projects.map((project, i) => (
+          <ProjectCard key={project.title} project={project} index={i} />
+        ))}
+      </section>
+
+      <section className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-white/70 bg-white/65 px-6 py-5 shadow-sm backdrop-blur-xl">
+        <div>
+          <p className="text-sm font-medium text-foreground">Want to talk about one of these projects?</p>
+          <p className="mt-1 text-sm text-foreground/70">I&apos;m always open to new ideas and collaborations.</p>
         </div>
-      </header>
-
-      <main className="mx-auto flex max-w-6xl flex-col gap-6 px-3 pb-10 pt-8 sm:gap-10 sm:px-6 sm:pb-14 sm:pt-14">
-        {/* Hero intro with stagger */}
-        <section
-          className={`space-y-4 transition-all duration-700 ease-out ${headerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-        >
-          <div className="flex items-center gap-2">
-            <div className="h-1 w-8 rounded-full bg-primary/40" />
-            <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-muted-foreground/70">
-              Selected work
-            </p>
-          </div>
-          <h2 className="text-2xl font-bold tracking-tight sm:text-4xl bg-gradient-to-r from-foreground via-foreground/90 to-muted-foreground bg-clip-text">
-            Real products I&apos;ve designed &amp; shipped
-          </h2>
-          <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground/70 sm:text-base">
-            A concise view of my favorite projects — spanning AI chatbots, travel experiences, and modern web apps — each
-            crafted with clean UI, thoughtful UX, and reliable engineering.
-          </p>
-          <div className="flex items-center gap-3 pt-1">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1.5 text-[11px] font-semibold text-primary">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary/60 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
-              </span>
-              {projects.length} Projects
-            </span>
-            <span className="text-[11px] text-muted-foreground/40">·</span>
-            <span className="text-[11px] text-muted-foreground/50">Open to new opportunities</span>
-          </div>
-        </section>
-
-        {/* 3-column project grid */}
-        <section className="grid gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, i) => (
-            <ProjectCard key={project.title} project={project} index={i} />
-          ))}
-        </section>
-
-        {/* Coming soon - refined */}
-        <section className="group mt-2 overflow-hidden rounded-2xl border border-dashed border-border/50 bg-card/50 px-5 py-4 text-xs text-muted-foreground backdrop-blur-sm transition-colors hover:border-primary/20 sm:py-5 sm:text-sm">
-          <div className="flex items-center gap-2">
-            <span className="text-lg">✨</span>
-            <p className="font-semibold text-foreground/80 sm:text-base">More projects coming soon</p>
-          </div>
-          <p className="mt-1.5 max-w-xl text-muted-foreground/60 leading-relaxed">
-            This section is ready for future work — when I ship a new product, it will
-            appear here automatically with the same beautiful layout.
-          </p>
-        </section>
-
-        {/* CTA - polished */}
-        <section className="mt-2 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border/40 bg-card/80 px-5 py-4 backdrop-blur-sm sm:mt-3">
-          <div>
-            <p className="text-xs font-medium text-foreground/70 sm:text-sm">
-              Want to talk about one of these projects?
-            </p>
-            <p className="mt-0.5 text-[11px] text-muted-foreground/50">
-              I&apos;m always open to new ideas and collaborations
-            </p>
-          </div>
-          <a href="mailto:harshit840hs@gmail.com">
-            <Button
-              size="sm"
-              className="rounded-full px-5 text-xs font-semibold shadow-md shadow-primary/15 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/25"
-            >
-              Let&apos;s collaborate ↗
-            </Button>
-          </a>
-        </section>
-      </main>
-    </div>
-  );
-};
+        <a href="mailto:harshit840hs@gmail.com">
+          <Button size="sm" className="rounded-full px-5 text-xs font-semibold">
+            Let&apos;s collaborate ↗
+          </Button>
+        </a>
+      </section>
+    </main>
+  </div>
+);
 
 export default Projects;
