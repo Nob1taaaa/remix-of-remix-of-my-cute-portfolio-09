@@ -83,18 +83,6 @@ const projects = [
     accentColor: "hsl(30, 70%, 50%)",
   },
   {
-    title: "Split",
-    subtitle: "Expense Splitter",
-    description:
-      "A clean expense-splitting app that lets you create or join groups with invite codes, track shared expenses, and settle balances effortlessly.",
-    role: "Full-Stack Developer",
-    tags: ["Expense Tracking", "Groups", "Invite Codes", "Clean UX", "Vercel"],
-    url: "https://split-two-wheat.vercel.app",
-    emoji: "💸",
-    gradient: "from-[hsl(160,50%,92%)] to-[hsl(170,40%,96%)]",
-    accentColor: "hsl(160, 55%, 42%)",
-  },
-  {
     title: "GhatBanaras",
     subtitle: "Hidden Banaras Explorer",
     description:
@@ -105,6 +93,18 @@ const projects = [
     emoji: "🔱",
     gradient: "from-[hsl(40,60%,92%)] to-[hsl(45,45%,96%)]",
     accentColor: "hsl(40, 65%, 48%)",
+  },
+  {
+    title: "Split",
+    subtitle: "Expense Splitter",
+    description:
+      "A clean expense-splitting app that lets you create or join groups with invite codes, track shared expenses, and settle balances effortlessly.",
+    role: "Full-Stack Developer",
+    tags: ["Expense Tracking", "Groups", "Invite Codes", "Clean UX", "Vercel"],
+    url: "https://split-two-wheat.vercel.app",
+    emoji: "💸",
+    gradient: "from-[hsl(160,50%,92%)] to-[hsl(170,40%,96%)]",
+    accentColor: "hsl(160, 55%, 42%)",
   },
   {
     title: "GPSVNS",
