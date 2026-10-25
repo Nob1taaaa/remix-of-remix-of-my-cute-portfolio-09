@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import harshitPortrait from "@/assets/harshit-portrait.jpg";
@@ -51,7 +52,7 @@ const Index = () => {
 
           <div className="space-y-3 sm:space-y-4">
             <p className="text-[10px] font-semibold uppercase tracking-[0.32em] text-muted-foreground sm:text-[11px]">
-              UI / UX Designer
+              AI Engineer &amp; Designer
             </p>
             <h1 className="text-3xl font-semibold leading-tight tracking-tight sm:text-5xl lg:text-[3.1rem]">
                Hey There,
@@ -65,7 +66,7 @@ const Index = () => {
           </div>
 
           <p className="max-w-md text-sm leading-relaxed text-muted-foreground sm:text-base">
-            I design beautifully simple, soft interfaces—and I love what I do.
+            Clean design, smart AI, and products that people actually love.
           </p>
 
           <div className="flex flex-wrap items-center gap-4 pt-1 text-sm">
@@ -97,35 +98,43 @@ const Index = () => {
             <div className="pointer-events-none absolute -inset-10 rounded-full bg-gradient-to-tr from-primary/30 via-primary/0 to-accent/30 opacity-80 blur-3xl" />
             <img
               src={harshitPortrait}
-              alt="Portrait of Harshit Shah, UI/UX Designer"
+              alt="Portrait of Harshit Shah, AI Engineer and Designer"
               className="relative h-full w-full object-cover"
               loading="lazy" />
           </div>
 
           <div className="grid w-full max-w-md gap-3 sm:gap-4 lg:max-w-none">
-            <div className="flex justify-between rounded-3xl border border-border/70 bg-background/95 px-4 py-3 shadow-sm shadow-primary/10 backdrop-blur-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-md sm:px-5 sm:py-4">
-              <div>
-                <p className="text-2xl font-semibold tracking-tight sm:text-3xl">2</p>
-                <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-muted-foreground sm:text-[11px]">
-                  Years
-                  <br />
-                  Experience
-                </p>
-              </div>
-              <div className="flex flex-col justify-end gap-1 text-right text-[10px] text-muted-foreground sm:text-[11px]">
-                <span className="inline-flex items-center justify-end gap-1 rounded-full bg-muted px-2 py-1 text-[9px] font-medium sm:text-[10px]">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                  Verified 2024
+            <a
+              href="https://niucampus.org"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Visit NIU Campus, used by 500+ students"
+              className="group flex items-center justify-between gap-4 rounded-3xl border border-border/70 bg-background/95 px-5 py-4 shadow-sm shadow-primary/10 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            >
+              <div className="flex items-center gap-4">
+                <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10 text-lg transition-transform duration-300 group-hover:rotate-6">
+                  🎓
                 </span>
+                <div>
+                  <p className="text-2xl font-semibold leading-none tracking-tight sm:text-3xl">500+</p>
+                  <p className="mt-1.5 text-[11px] font-medium text-muted-foreground sm:text-xs">
+                    Students use NIU Campus
+                  </p>
+                </div>
               </div>
-            </div>
+              <span className="inline-flex shrink-0 items-center gap-2 rounded-full bg-foreground px-3 py-1.5 text-[11px] font-medium text-background transition-transform duration-300 group-hover:translate-x-0.5">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
+                Visit site
+                <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </span>
+            </a>
 
             <div className="rounded-3xl bg-gradient-to-br from-primary/90 to-primary/60 px-4 py-3 text-xs text-primary-foreground shadow-md shadow-primary/30 transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg sm:px-5 sm:py-4 sm:text-sm">
               <p className="text-[10px] font-medium uppercase tracking-[0.22em] opacity-80 sm:text-[11px]">
                 Currently
               </p>
               <p className="mt-1.5 text-base font-semibold sm:text-lg">Open to Work</p>
-              <p className="text-[11px] opacity-90 sm:text-xs">AI/ML Engineer · Designer</p>
+              <p className="text-[11px] opacity-90 sm:text-xs">AI Engineer · Designer</p>
               <div className="mt-2 inline-flex items-center gap-2 rounded-full bg-background/10 px-3 py-1 text-[10px] sm:mt-2.5 sm:text-[11px]">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
                 Available Now
