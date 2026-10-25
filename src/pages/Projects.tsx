@@ -258,7 +258,7 @@ const ProjectCard = ({ project, index }: { project: (typeof projects)[0]; index:
       rel="noreferrer"
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
-      className={`group flex flex-col overflow-hidden rounded-2xl border border-white/70 bg-white/65 shadow-[0_8px_30px_-12px_rgba(15,23,42,0.18)] backdrop-blur-xl transition-all duration-700 ease-out hover:-translate-y-1.5 hover:shadow-[0_24px_50px_-18px_rgba(15,23,42,0.28)] ${
+      className={`group flex flex-col overflow-hidden rounded-2xl border border-white/70 bg-white/65 active:scale-[0.98] motion-reduce:active:scale-100 shadow-[0_8px_30px_-12px_rgba(15,23,42,0.18)] backdrop-blur-xl transition-all duration-700 ease-out hover:-translate-y-1.5 hover:shadow-[0_24px_50px_-18px_rgba(15,23,42,0.28)] ${
         isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
       }`}
     >
@@ -268,7 +268,7 @@ const ProjectCard = ({ project, index }: { project: (typeof projects)[0]; index:
             src={image}
             alt={`${project.title} screenshot`}
             loading="lazy"
-            className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+            className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105 group-active:scale-110 motion-reduce:transition-none"
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary/10 to-accent text-5xl">
